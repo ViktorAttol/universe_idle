@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="universe_idle"
-config/features=PackedStringArray("4.2", "Forward Plus")
+run/main_scene="res://scenes/prototypes/clicker/prototype_clicker.tscn"
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [debug]
@@ -33,6 +34,12 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="universe_idle"
+
+[file_customization]
+
+folder_colors={
+"res://scripts/": "pink"
+}
 
 [filesystem]
 
