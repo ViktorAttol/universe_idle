@@ -1,11 +1,12 @@
 using Godot;
 using System;
+
 /// <Summary>
 /// A cklicker prototype creating stardust
 /// </Summary>
-
 public partial class PrototypeClicker : Control
 {
+	/// Label which displays current stardust amount
 	[Export]
 	private Label _label;
 	
@@ -23,20 +24,24 @@ public partial class PrototypeClicker : Control
 	{
 	}
 	
-	private void _on_button_pressed()
+	/// Callback function for creating stardust
+	private void _on_btn_pressed_create_stardust()
 	{
 		CreateStardust();
 		UpdateLabelText();
 	}
 	
+	/// Creates stardust
 	private void CreateStardust(){
 		_stardust += 1;
 	}
 	
+	/// Updates stardust label with current stardust ammount
 	private void UpdateLabelText(){
 		_label.Text = "Stardust: " + _stardust;
 	}
 }
+
 
 
 

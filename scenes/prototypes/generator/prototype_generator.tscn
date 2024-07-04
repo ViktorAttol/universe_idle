@@ -1,16 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6j083m17rmqk"]
+[gd_scene load_steps=2 format=3 uid="uid://cbrl0tofhjt3o"]
 
-[ext_resource type="Script" path="res://scenes/prototypes/clicker/PrototypeClicker.cs" id="1_d2t42"]
+[ext_resource type="Script" path="res://PrototypeGenerator.cs" id="1_7heu6"]
 
-[node name="PrototypeClicker" type="Control" node_paths=PackedStringArray("_label")]
+[node name="PrototypeGenerator" type="Control" node_paths=PackedStringArray("_label", "_button", "_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_d2t42")
+script = ExtResource("1_7heu6")
 _label = NodePath("Label")
+_button = NodePath("Button")
+_timer = NodePath("Timer")
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(0, 80)
@@ -19,7 +21,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "Stardust: <value>"
+theme_type_variation = &"HeaderLarge"
+text = "Stardust: <no_value>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -37,6 +40,9 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Create Stardust"
+text = "Start generating stardust"
 
-[connection signal="pressed" from="Button" to="." method="_on_btn_pressed_create_stardust"]
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
