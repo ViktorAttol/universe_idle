@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cymw4ua54w5u"]
+[gd_scene load_steps=4 format=3 uid="uid://cymw4ua54w5u"]
 
+[ext_resource type="Script" path="res://scenes/user_interface/UserInterface.cs" id="1_r76l3"]
 [ext_resource type="PackedScene" uid="uid://cbrl0tofhjt3o" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_suk4g"]
+[ext_resource type="PackedScene" uid="uid://b6j083m17rmqk" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="2_c6x55"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r76l3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -95,6 +98,10 @@ layout_mode = 2
 [node name="MainView" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="PrototypeClicker" parent="HBoxContainer/MainView" instance=ExtResource("2_c6x55")]
+visible = false
+layout_mode = 1
 
 [node name="PrototypeGenerator" parent="HBoxContainer/MainView" instance=ExtResource("1_suk4g")]
 layout_mode = 1
