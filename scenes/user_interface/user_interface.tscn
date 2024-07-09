@@ -52,9 +52,13 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer"]
 layout_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+[node name="PrototypeGeneratorLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "PrototypeGenerator"
+text = "Prototype Generator"
+
+[node name="PrototypeClickerLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prototype Clicker"
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
@@ -99,9 +103,15 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PrototypeClicker" parent="HBoxContainer/MainView" instance=ExtResource("2_c6x55")]
+[node name="PrototypeClicker" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("2_c6x55")]
 visible = false
 layout_mode = 1
+userInterface = NodePath("../../..")
+view = 1
 
-[node name="PrototypeGenerator" parent="HBoxContainer/MainView" instance=ExtResource("1_suk4g")]
+[node name="PrototypeGenerator" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("1_suk4g")]
 layout_mode = 1
+userInterface = NodePath("../../..")
+
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]

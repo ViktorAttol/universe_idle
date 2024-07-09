@@ -21,10 +21,20 @@ public partial class PrototypeGenerator : Control
 	[Export]
 	private Timer _timer;
 	
+	/// View reference
+	[Export]
+	private UserInterface userInterface;
+	
+	/// View reference
+	[Export]
+	private UserInterface.Views view;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		UpdateStardustLabel();
+		userInterface.navigation_requested += OnNavigationRequest;
+		Visible = true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,6 +70,16 @@ public partial class PrototypeGenerator : Control
 	{
 		CreateStardust();
 	}
+	
+	/// Navigation cb function
+	private void OnNavigationRequest(int requestedView){
+		if((UserInterface.Views)requestedView == view) {
+			Visible = true;
+			return;
+		}
+		Visible = false;
+	}
+	
 }
 
 
