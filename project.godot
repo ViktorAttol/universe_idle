@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="universe_idle"
-run/main_scene="res://scenes/prototypes/clicker/prototype_clicker.tscn"
+run/main_scene="res://scenes/game/game.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

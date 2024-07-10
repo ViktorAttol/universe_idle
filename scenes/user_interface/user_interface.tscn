@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cymw4ua54w5u"]
+[gd_scene load_steps=5 format=3 uid="uid://cymw4ua54w5u"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/UserInterface.cs" id="1_r76l3"]
 [ext_resource type="PackedScene" uid="uid://cbrl0tofhjt3o" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_suk4g"]
 [ext_resource type="PackedScene" uid="uid://b6j083m17rmqk" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="2_c6x55"]
+[ext_resource type="Script" path="res://scenes/user_interface/StardustLabel.cs" id="2_s8rip"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -86,10 +87,11 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+[node name="StardustLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Stardust: 15
 "
+script = ExtResource("2_s8rip")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2

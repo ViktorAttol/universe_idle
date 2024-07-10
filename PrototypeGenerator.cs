@@ -32,7 +32,7 @@ public partial class PrototypeGenerator : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		UpdateStardustLabel();
+		//UpdateStardustLabel();
 		userInterface.navigation_requested += OnNavigationRequest;
 		Visible = true;
 	}
@@ -40,17 +40,17 @@ public partial class PrototypeGenerator : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
-	
-	/// Creates 1 stardust
-	private void CreateStardust(){
-		_stardust += 1;
 		UpdateStardustLabel();
 	}
 	
-	/// Updates stardust label to stardust amount
+	/// Creates stardust
+	private void CreateStardust(){
+		Game.Instance.Data.AddStardust(1);
+	}
+	
+	/// Updates stardust label with current stardust ammount
 	private void UpdateStardustLabel(){
-		_label.Text = "Stardust : " + _stardust;	
+		_label.Text = "Stardust : " + Game.Instance.Data.Stardust;
 	}
 	
 	/// Beginnst stardust generation
