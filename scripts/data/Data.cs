@@ -15,4 +15,8 @@ public partial class Data : Resource
 	public void AddStardust(int amount){
 		_stardust += amount;
 	}
+	
+	public void SubtractStardust(int amount){
+		_stardust -= amount;
+	}
 }
