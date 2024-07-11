@@ -7,7 +7,7 @@ public partial class UserInterface : Control
 {
 	/// List of possible views
 	public enum Views{
-		PROTOTYPE_GENERATOR, PROTOTYPE_CLICKER,
+		PROTOTYPE_GENERATOR, PROTOTYPE_CLICKER, PROTOTYPE_UPGRADES,
 	}
 	/// Signal cb für navigation requests 
 	[Signal]
@@ -33,7 +33,15 @@ public partial class UserInterface : Control
 	{
 		EmitSignal(SignalName.navigation_requested, (int)Views.PROTOTYPE_CLICKER);	
 	}
+	
+	private void _on_prototype_upgrades_pressed()
+	{
+		EmitSignal(SignalName.navigation_requested, (int)Views.PROTOTYPE_UPGRADES);	
+	}
 }
+
+
+
 
 
 
