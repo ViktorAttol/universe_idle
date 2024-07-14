@@ -30,7 +30,7 @@ public partial class PrototypeClicker : Control
 	
 	/// Creates stardust
 	private void CreateStardust(){
-		HandlerStardust.Instance.CreateStardust(1);
+		HandlerStardust.Instance.TriggerClicker();
 	}
 
 	

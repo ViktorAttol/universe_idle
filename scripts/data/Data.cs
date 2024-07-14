@@ -4,7 +4,17 @@ using System;
 public partial class Data : Resource
 {
 	[Export]
-	public int _stardust = 0;
+	private int _stardust = 0;
+	private int _up01Level = 0;
+	
+	public int Up01Level {
+		get {
+			return _up01Level;
+		}
+		set{
+			_up01Level = value;
+		}
+	}
 	
 	public int Stardust {
 		get {

@@ -68,4 +68,12 @@ public partial class HandlerStardust : Node
 		OnStardustConsumed(amount);
 		return true;
 	}
+	
+	/// Triggered by the Clicker. Creates stardust.
+	public void TriggerClicker(){
+		int amount = 1;
+		amount += Game.Instance.Data.Up01Level;
+		
+		CreateStardust(amount);
+	}
 }
