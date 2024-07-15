@@ -17,7 +17,7 @@ public partial class CompoUpgrade : Control
 	public Button button;
 	
 	/// Upgrade to display.
-	private Up01ClickerUpgrade upgrade;
+	private Upgrade upgrade;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

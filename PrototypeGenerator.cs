@@ -4,7 +4,7 @@ using System;
 /// <Summary>
 /// A generator prototype creating stardust
 /// </Summary>
-public partial class PrototypeGenerator : Control
+public partial class PrototypeGenerator : View
 {	
 	/// Button which starts generation of stardust
 	[Export]
@@ -14,19 +14,10 @@ public partial class PrototypeGenerator : Control
 	[Export]
 	private Timer _timer;
 	
-	/// View reference
-	[Export]
-	private UserInterface userInterface;
-	
-	/// View reference
-	[Export]
-	private UserInterface.Views view;
-	
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		userInterface.navigation_requested += OnNavigationRequest;
+		base._Ready();
 		Visible = true;
 	}
 	
@@ -52,16 +43,6 @@ public partial class PrototypeGenerator : Control
 	{
 		CreateStardust();
 	}
-	
-	/// Navigation cb function
-	private void OnNavigationRequest(int requestedView){
-		if((UserInterface.Views)requestedView == view) {
-			Visible = true;
-			return;
-		}
-		Visible = false;
-	}
-	
 }
 
 
