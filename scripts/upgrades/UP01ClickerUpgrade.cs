@@ -6,8 +6,6 @@ using System;
 /// </Summary>
 public partial class Up01ClickerUpgrade: Upgrade
 {
-	
-	
 	public Up01ClickerUpgrade() : base(Game.Instance.Data.Up01Level, "Clicker Upgrade", 5){
 		CalculateCost();
 	}

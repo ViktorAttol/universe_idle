@@ -24,12 +24,16 @@ public partial class Game : Node
 	
 	public Data Data {
 		get {
-			return _instance._data;
+			return _data;
+		}
+		set {
+			_data = value;
 		}
 	}
 	
 	public override void _EnterTree(){
 		if(_instance == null) _instance = new Game();
+		SaveSystem.LoadData();
 	}
 	
 	// Called when the node enters the scene tree for the first time.
@@ -41,4 +45,13 @@ public partial class Game : Node
 	public override void _Process(double delta)
 	{
 	}
+	
+	/// Triggered when the save timer completes a loop. Sage Game
+	private void OnSaveTimerTimeout()
+	{
+		SaveSystem.SaveData();
+	}
 }
+
+
+

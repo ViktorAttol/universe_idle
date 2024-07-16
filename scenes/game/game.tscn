@@ -13,3 +13,9 @@ script = ExtResource("1_x4mtv")
 script = ExtResource("2_pfxb2")
 
 [node name="UserInterface" parent="." instance=ExtResource("2_g4avl")]
+
+[node name="SaveTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="SaveTimer" to="." method="OnSaveTimerTimeout"]

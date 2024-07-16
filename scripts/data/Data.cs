@@ -3,9 +3,12 @@ using System;
 
 public partial class Data : Resource
 {
+	/// Values have to be Export to save and load properly with Resource system.
 	[Export]
 	private int _stardust = 0;
+	[Export]
 	private int _up01Level = 0;
+	
 	
 	public int Up01Level {
 		get {
