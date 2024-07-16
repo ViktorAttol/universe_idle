@@ -8,7 +8,7 @@ public partial class UserInterface : Control
 {
 	/// List of possible views
 	public enum Views{
-		PROTOTYPE_GENERATOR, PROTOTYPE_CLICKER, PROTOTYPE_UPGRADES,
+		PROTOTYPE_GENERATOR, PROTOTYPE_CLICKER, PROTOTYPE_UPGRADES, CONSCIOUSNESS_CORE,
 	}
 	/// Signal cb für navigation requests 
 	[Signal]
@@ -28,7 +28,15 @@ public partial class UserInterface : Control
 	{
 		EmitSignal(SignalName.navigation_requested, (int)Views.PROTOTYPE_UPGRADES);	
 	}
+	
+	private void OnConsciousnessCoreBtnPressed()
+	{
+		EmitSignal(SignalName.navigation_requested, (int)Views.CONSCIOUSNESS_CORE);	
+	}
 }
+
+
+
 
 
 

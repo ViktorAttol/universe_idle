@@ -8,7 +8,8 @@ public partial class Data : Resource
 	private int _stardust = 0;
 	[Export]
 	private int _up01Level = 0;
-	
+	[Export]
+	private int _consciousnessCore = 1;
 	
 	public int Up01Level {
 		get {
@@ -18,6 +19,14 @@ public partial class Data : Resource
 			_up01Level = value;
 		}
 	}
+	public int ConsciousnessCore {
+		get {
+			return _consciousnessCore;
+		}
+		set{
+			_consciousnessCore = value;
+		}
+	}
 	
 	public int Stardust {
 		get {
@@ -25,11 +34,21 @@ public partial class Data : Resource
 		}
 	}
 	
+	
+	
 	public void AddStardust(int amount){
 		_stardust += amount;
 	}
 	
 	public void SubtractStardust(int amount){
 		_stardust -= amount;
+	}
+	
+	public void AddConsciousnessCores(int amount){
+		_consciousnessCore += amount;
+	}
+	
+	public void SubtractConsciousnessCores(int amount){
+		_consciousnessCore -= amount;
 	}
 }
