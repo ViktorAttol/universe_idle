@@ -11,6 +11,9 @@ public partial class Data : Resource
 	[Export]
 	private int _consciousnessCore = 1;
 	
+	[Export]
+	private DataCCUpgrades _ccUpgrades = new DataCCUpgrades();
+	
 	public int Up01Level {
 		get {
 			return _up01Level;
@@ -34,7 +37,14 @@ public partial class Data : Resource
 		}
 	}
 	
-	
+	public DataCCUpgrades CCUpgrades {
+		get {
+			return _ccUpgrades;
+		}
+		set{
+			_ccUpgrades = value;
+		}
+	}
 	
 	public void AddStardust(int amount){
 		_stardust += amount;

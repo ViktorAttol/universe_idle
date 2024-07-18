@@ -10,9 +10,11 @@ public partial class HandlerCCUpgrades : Node
 	
 	/// Emitted when consciousness core is created.
 	[Signal]
-	public delegate void CCUpgradeCreatedEventHandler(int amount);
+	public delegate void CCUpgradeLeveledUpEventHandler(Upgrade upgrade);
 
-	private HandlerConsciousnessCore(){
+	private CCU01StardustGenerator = u01StardustGeneration;
+
+	private HandlerCCUpgrades(){
 		
 	}
 	
@@ -24,5 +26,9 @@ public partial class HandlerCCUpgrades : Node
 	
 	public override void _EnterTree(){
 		if(_instance == null) _instance = new HandlerCCUpgrades();
+	}
+	
+	public void OnCCUpgradeLevelUp(Upgrade upgrade){
+		EmitSignal(SignalName.CCUpgradeLeveledUp, upgrade);
 	}
 }
