@@ -22,24 +22,48 @@ public partial class CompoUpgrade : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		upgrade = new Up01ClickerUpgrade();
-		
+		if(upgrade == null) upgrade = new Up01ClickerUpgrade();
 		UpdateLabelTitle();
 		UpdateLabelDescription();
 		UpdateButton();
 		
-		HandlerStardust.Instance.StardustCreated += UpdateButton;
-		HandlerStardust.Instance.StardustConsumed += UpdateButton;
 		
-		upgrade.Upgrade01LevelUp += UpdateLabelTitle;
-		upgrade.Upgrade01LevelUp += UpdateLabelDescription;
-		upgrade.Upgrade01LevelUp += UpdateButton;
+		
+		MountUpgrade();
+		//upgrade.Upgrade01LevelUp += UpdateLabelTitle;
+		//upgrade.Upgrade01LevelUp += UpdateLabelDescription;
+		//upgrade.Upgrade01LevelUp += UpdateButton;
 		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	
+	public void SetUpgrade(Upgrade newUpgrade){
+		upgrade = newUpgrade;
+	}
+	
+	private void UnmountUpgrade(Upgrade upgrade){
+		HandlerStardust.Instance.StardustCreated -= UpdateButton;
+		HandlerStardust.Instance.StardustConsumed -= UpdateButton;
+		
+		upgrade.Upgrade01LevelUp -= UpdateLabelTitle;
+		upgrade.Upgrade01LevelUp -= UpdateLabelDescription;
+		upgrade.Upgrade01LevelUp -= UpdateButton;
+
+	}
+	
+	private void MountUpgrade(){
+	
+		HandlerStardust.Instance.StardustCreated += UpdateButton;
+		HandlerStardust.Instance.StardustConsumed += UpdateButton;
+		
+		upgrade.Upgrade01LevelUp += UpdateLabelTitle;
+		upgrade.Upgrade01LevelUp += UpdateLabelDescription;
+		upgrade.Upgrade01LevelUp += UpdateButton;
+	
 	}
 	
 	/// Updates the title of the upgrade.

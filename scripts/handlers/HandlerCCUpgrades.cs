@@ -12,10 +12,9 @@ public partial class HandlerCCUpgrades : Node
 	[Signal]
 	public delegate void CCUpgradeLeveledUpEventHandler(Upgrade upgrade);
 
-	private CCU01StardustGenerator = u01StardustGeneration;
+	private CCU01StardustGenerator u01StardustGeneration;
 
 	private HandlerCCUpgrades(){
-		
 	}
 	
 	public static HandlerCCUpgrades Instance{
@@ -28,7 +27,17 @@ public partial class HandlerCCUpgrades : Node
 		if(_instance == null) _instance = new HandlerCCUpgrades();
 	}
 	
+	public override void _Ready(){
+		if(u01StardustGeneration == null) u01StardustGeneration = new CCU01StardustGenerator();
+	}
+	
 	public void OnCCUpgradeLevelUp(Upgrade upgrade){
 		EmitSignal(SignalName.CCUpgradeLeveledUp, upgrade);
+	}
+	
+	/// Returns all CCUpgrades
+	public Upgrade[] GetAllUpgrades(){
+		if(u01StardustGeneration == null) u01StardustGeneration = new CCU01StardustGenerator();	
+		return new Upgrade[] {u01StardustGeneration};
 	}
 }

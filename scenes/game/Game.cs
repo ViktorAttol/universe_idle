@@ -12,6 +12,10 @@ public partial class Game : Node
 	/// Contains data to save and load
 	private Data _data;
 	
+	/// Reference to the user interface packed scene
+	[Export]
+	private PackedScene sceneUserInterface;
+	
 	private Game(){
 		_data = new Data();
 	}
@@ -39,6 +43,8 @@ public partial class Game : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		UserInterface nodeUserInterface = sceneUserInterface.Instantiate() as UserInterface;
+		this.AddChild(nodeUserInterface);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
