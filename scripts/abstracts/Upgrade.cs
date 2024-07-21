@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+/// <Summary>
+/// Abstract class as base for every upgrade.
+/// </Summary>
 public partial class Upgrade : Node
 {
 	[Signal]
