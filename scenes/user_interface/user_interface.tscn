@@ -138,7 +138,6 @@ userInterface = NodePath("../../..")
 [node name="ConsciousnessCoreView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("6_bx6ey")]
 layout_mode = 1
 userInterface = NodePath("../../..")
-view = 3
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
