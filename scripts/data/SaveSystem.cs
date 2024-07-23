@@ -1,6 +1,10 @@
 using Godot;
 using System;
 
+/// <Summary>
+/// Responsible for save and load of the game.
+/// Currently with the common ResourceSaver/Loader which is not save.
+/// </Summary>
 public partial class SaveSystem
 {
 	/// Path for save and load
