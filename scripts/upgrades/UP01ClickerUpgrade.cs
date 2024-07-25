@@ -36,6 +36,6 @@ public partial class Up01ClickerUpgrade: Upgrade
 		Game.Instance.Data.Up01Level = level;
 		
 		CalculateCost();
-		EmitSignal(SignalName.Upgrade01LevelUp);
+		EmitSignal(SignalName.UpgradeLevelUp);
 	}
 }

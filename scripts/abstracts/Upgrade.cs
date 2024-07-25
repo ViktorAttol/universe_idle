@@ -7,7 +7,7 @@ using System;
 public partial class Upgrade : Node
 {
 	[Signal]
-	public delegate void Upgrade01LevelUpEventHandler();
+	public delegate void UpgradeLevelUpEventHandler();
 	
 	protected int level = -1;
 	protected String title = "Not Defined";

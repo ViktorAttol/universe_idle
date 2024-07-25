@@ -49,9 +49,9 @@ public partial class CompoUpgrade : Control
 		HandlerStardust.Instance.StardustCreated -= UpdateButton;
 		HandlerStardust.Instance.StardustConsumed -= UpdateButton;
 		
-		upgrade.Upgrade01LevelUp -= UpdateLabelTitle;
-		upgrade.Upgrade01LevelUp -= UpdateLabelDescription;
-		upgrade.Upgrade01LevelUp -= UpdateButton;
+		upgrade.UpgradeLevelUp -= UpdateLabelTitle;
+		upgrade.UpgradeLevelUp -= UpdateLabelDescription;
+		upgrade.UpgradeLevelUp -= UpdateButton;
 
 	}
 	
@@ -60,9 +60,9 @@ public partial class CompoUpgrade : Control
 		HandlerStardust.Instance.StardustCreated += UpdateButton;
 		HandlerStardust.Instance.StardustConsumed += UpdateButton;
 		
-		upgrade.Upgrade01LevelUp += UpdateLabelTitle;
-		upgrade.Upgrade01LevelUp += UpdateLabelDescription;
-		upgrade.Upgrade01LevelUp += UpdateButton;
+		upgrade.UpgradeLevelUp += UpdateLabelTitle;
+		upgrade.UpgradeLevelUp += UpdateLabelDescription;
+		upgrade.UpgradeLevelUp += UpdateButton;
 	
 	}
 	
