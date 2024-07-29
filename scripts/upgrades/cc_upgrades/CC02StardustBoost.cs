@@ -37,6 +37,7 @@ public partial class CC02StardustBoost : Upgrade
 		bool success = HandlerConsciousnessCore.Instance.ConsumeConsciousneddCores(cost);
 		if(!success) return;
 		level ++;
+		GD.Print("level: " + level);
 		Game.Instance.Data.CCUpgrades.U02StardustBoostLevel = level;
 		
 		HandlerCCUpgrades.Instance.OnCCUpgradeLevelUp(this);

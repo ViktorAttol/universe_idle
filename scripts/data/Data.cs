@@ -5,11 +5,11 @@ public partial class Data : Resource
 {
 	/// Values have to be Export to save and load properly with Resource system.
 	[Export]
-	private int _stardust = 0;
+	private int _stardust = 1;
 	[Export]
 	private int _up01Level = 0;
 	[Export]
-	private int _consciousnessCore = 1;
+	private int _consciousnessCore = 10;
 	
 	[Export]
 	private DataCCUpgrades _ccUpgrades = new DataCCUpgrades();

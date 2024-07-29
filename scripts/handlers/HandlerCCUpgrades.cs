@@ -51,7 +51,8 @@ public partial class HandlerCCUpgrades : Node
 	
 	/// Returns all CCUpgrades
 	public Upgrade[] GetAllUpgrades(){
-		if(_u01StardustGeneration == null) _u01StardustGeneration = new CCU01StardustGenerator();	
+		if(_u01StardustGeneration == null) _u01StardustGeneration = new CCU01StardustGenerator();
+		if(_u02StardustBoost == null) _u02StardustBoost = new CC02StardustBoost();	
 		return new Upgrade[] {_u01StardustGeneration, _u02StardustBoost};
 	}
 }
