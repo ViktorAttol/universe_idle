@@ -15,9 +15,11 @@ public partial class CCU01StardustGenerator : Upgrade
 	
 	/// Returns an String with the description of the upgrade.
 	public override String GetDescription(){
-		return "Awaken the universe to start generating Stardust. \n" +
-		"Effect: passive Stardust generation \n" +
-		"Cost: " + cost + " Consciousness Core";
+		String text = "Awaken the universe to start generating Stardust. \n" +
+		"Effect: passive Stardust generation";
+		if(level < maxLevel) text += "\nCost: " + cost + " Consciousness Core";
+		return  text;
+		
 	}
 	
 	/// Calculates the cost for the current upgrade.
@@ -38,7 +40,7 @@ public partial class CCU01StardustGenerator : Upgrade
 		if(!success) return;
 		level ++;
 		Game.Instance.Data.CCUpgrades.U01StardustGeneration = true;
-		
+		GD.Print("levelup");
 		HandlerCCUpgrades.Instance.OnCCUpgradeLevelUp(this);
 	}
 }
