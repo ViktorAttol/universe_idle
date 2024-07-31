@@ -40,6 +40,7 @@ public partial class HandlerCCUpgrades : Node
 		if(_instance == null) _instance = new HandlerCCUpgrades();
 	}
 	
+	/// Sets instances of upgrades if not already set.
 	public override void _Ready(){
 		if(_u01StardustGeneration == null) _u01StardustGeneration = new CCU01StardustGenerator();
 		if(_u02StardustBoost == null) _u02StardustBoost = new CC02StardustBoost();

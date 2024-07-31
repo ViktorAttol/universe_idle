@@ -41,12 +41,14 @@ public partial class CompoUpgrade : Control
 	{
 	}
 	
+	/// Sets ne upgrade.
 	public void SetUpgrade(Upgrade newUpgrade){
 		upgrade = newUpgrade;
 		UnmountUpgrade();
 		MountUpgrade();
 	}
 	
+	/// Unmounts current upgrade.
 	private void UnmountUpgrade(){
 		HandlerStardust.Instance.StardustCreated -= UpdateButton;
 		HandlerStardust.Instance.StardustConsumed -= UpdateButton;
@@ -57,6 +59,7 @@ public partial class CompoUpgrade : Control
 
 	}
 	
+	/// mounts current upgrade.
 	private void MountUpgrade(){
 	
 		HandlerStardust.Instance.StardustCreated += UpdateButton;
