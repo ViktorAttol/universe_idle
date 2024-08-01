@@ -28,25 +28,31 @@ public partial class HandlerCCUpgrades : Node
 	}
 
 	private HandlerCCUpgrades(){
+		_u01StardustGeneration = new CCU01StardustGenerator();
+		_u02StardustBoost = new CC02StardustBoost();
 	}
 	
 	public static HandlerCCUpgrades Instance{
 		get{
+			if(_instance == null) _instance = new HandlerCCUpgrades();
 			return _instance;
 		}
 	}
 	
+	/// Creates 
 	public override void _EnterTree(){
 		if(_instance == null) _instance = new HandlerCCUpgrades();
 	}
 	
 	/// Sets instances of upgrades if not already set.
 	public override void _Ready(){
-		if(_u01StardustGeneration == null) _u01StardustGeneration = new CCU01StardustGenerator();
-		if(_u02StardustBoost == null) _u02StardustBoost = new CC02StardustBoost();
+		if(_instance == null) _instance = new HandlerCCUpgrades();
+		//if(_u01StardustGeneration == null) _u01StardustGeneration = new CCU01StardustGenerator();
+		//if(_u02StardustBoost == null) _u02StardustBoost = new CC02StardustBoost();
 	}
 	
 	public void OnCCUpgradeLevelUp(Upgrade upgrade){
+		GD.Print("OnCCUpgradeLevelUp called for upgrade: " + upgrade.GetTitle());
 		EmitSignal(SignalName.CCUpgradeLeveledUp, upgrade);
 	}
 	

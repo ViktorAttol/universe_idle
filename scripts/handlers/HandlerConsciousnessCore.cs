@@ -22,6 +22,7 @@ public partial class HandlerConsciousnessCore : Node
 	
 	public static HandlerConsciousnessCore Instance{
 		get{
+			if(_instance == null) _instance = new HandlerConsciousnessCore();
 			return _instance;
 		}
 	}

@@ -22,6 +22,8 @@ public partial class Game : Node
 	
 	public static Game Instance {
 		get {
+			
+			if(_instance == null) _instance = new Game();
 			return _instance;
 		}
 	}
