@@ -10,6 +10,8 @@ public partial class DataCCUpgrades : Resource
 	private bool _u01StardustGeneration = false;
 	[Export]
 	private int _u02StardustBoostLevel = 0;
+	[Export]
+	private bool _u03UnlockNebulas = false;
 	
 	public bool U01StardustGeneration {
 		get {
@@ -26,6 +28,15 @@ public partial class DataCCUpgrades : Resource
 		}
 		set{
 			_u02StardustBoostLevel = value;
+		}
+	}
+	
+	public bool U03UnlockNebulas {
+		get {
+			return _u03UnlockNebulas;
+		}
+		set{
+			_u03UnlockNebulas = value;
 		}
 	}
 }

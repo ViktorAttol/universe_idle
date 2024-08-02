@@ -54,25 +54,25 @@ public partial class HandlerStardustGenerator : Node
 			OnUpgrade01StardustGeneration();
 			return;
 		}
-		if(upgrade.GetType() == typeof(CC02StardustBoost)){
+		if(upgrade.GetType() == typeof(CCU02StardustBoost)){
 			OnUpgrade02StardustBoost();
 			return;
 		}
 	}
 	
 	private void OnUpgrade01StardustGeneration(){
-		GD.Print("stardust generation timer started");
-		timer.Start();
+		//GD.Print("stardust generation timer started");
+		if(timer.IsStopped()) timer.Start();
 	}
 	
 	private void OnUpgrade02StardustBoost(){
-		GD.Print("calculate power");
+		//GD.Print("calculate power");
 		CalculateGeneratorPower();
 	}
 	/// Callback function for consciousness core upgrades.
 	private void WatchForCCU01LevelUp(){
-		GD.Print("stardust generation timer started");
-		timer.Start();
+		//GD.Print("stardust generation timer started");
+		if(timer.IsStopped()) timer.Start();
 		HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp -= WatchForCCU01LevelUp;
 	}
 	/// Calculate the amount of stardust which should be created every seconds.

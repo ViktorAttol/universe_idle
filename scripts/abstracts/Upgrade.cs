@@ -18,7 +18,6 @@ public partial class Upgrade : Node
 		this.level = level;
 		this.title = title;
 		this.baseCost = baseCost;
-		
 	}
 	
 	public int GetLevel(){

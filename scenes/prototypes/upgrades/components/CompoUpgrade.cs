@@ -23,11 +23,7 @@ public partial class CompoUpgrade : Control
 	public override void _Ready()
 	{
 		if(upgrade == null) upgrade = new Up01ClickerUpgrade();
-		UpdateLabelTitle();
-		UpdateLabelDescription();
-		UpdateButton();
-		
-		
+		UpgradeComponent();
 		
 		MountUpgrade();
 		//upgrade.Upgrade01LevelUp += UpdateLabelTitle;
@@ -41,13 +37,30 @@ public partial class CompoUpgrade : Control
 	{
 	}
 	
+	private void UpgradeComponent(){
+		UpdateLabelTitle();
+		UpdateLabelDescription();
+		UpdateButton();	
+	}
+	
 	/// Sets ne upgrade.
 	public void SetUpgrade(Upgrade newUpgrade){
 		upgrade = newUpgrade;
 		UnmountUpgrade();
 		MountUpgrade();
+		UpgradeComponent();
 	}
 	
+	/// mounts current upgrade.
+	private void MountUpgrade(){
+		HandlerStardust.Instance.StardustCreated += UpdateButton;
+		HandlerStardust.Instance.StardustConsumed += UpdateButton;
+		
+		upgrade.UpgradeLevelUp += UpdateLabelTitle;
+		upgrade.UpgradeLevelUp += UpdateLabelDescription;
+		upgrade.UpgradeLevelUp += UpdateButton;
+	}
+		
 	/// Unmounts current upgrade.
 	private void UnmountUpgrade(){
 		HandlerStardust.Instance.StardustCreated -= UpdateButton;
@@ -56,19 +69,6 @@ public partial class CompoUpgrade : Control
 		upgrade.UpgradeLevelUp -= UpdateLabelTitle;
 		upgrade.UpgradeLevelUp -= UpdateLabelDescription;
 		upgrade.UpgradeLevelUp -= UpdateButton;
-
-	}
-	
-	/// mounts current upgrade.
-	private void MountUpgrade(){
-	
-		HandlerStardust.Instance.StardustCreated += UpdateButton;
-		HandlerStardust.Instance.StardustConsumed += UpdateButton;
-		
-		upgrade.UpgradeLevelUp += UpdateLabelTitle;
-		upgrade.UpgradeLevelUp += UpdateLabelDescription;
-		upgrade.UpgradeLevelUp += UpdateButton;
-	
 	}
 	
 	/// Updates the title of the upgrade.
