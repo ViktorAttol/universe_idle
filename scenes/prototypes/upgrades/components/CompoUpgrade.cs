@@ -23,7 +23,7 @@ public partial class CompoUpgrade : Control
 	public override void _Ready()
 	{
 		if(upgrade == null) upgrade = new Up01ClickerUpgrade();
-		UpgradeComponent();
+		UpdateComponent();
 		
 		MountUpgrade();
 		//upgrade.Upgrade01LevelUp += UpdateLabelTitle;
@@ -37,7 +37,8 @@ public partial class CompoUpgrade : Control
 	{
 	}
 	
-	private void UpgradeComponent(){
+	/// Updates every ui part of the component.
+	private void UpdateComponent(){
 		UpdateLabelTitle();
 		UpdateLabelDescription();
 		UpdateButton();	
@@ -48,7 +49,7 @@ public partial class CompoUpgrade : Control
 		upgrade = newUpgrade;
 		UnmountUpgrade();
 		MountUpgrade();
-		UpgradeComponent();
+		UpdateComponent();
 	}
 	
 	/// mounts current upgrade.
@@ -83,11 +84,7 @@ public partial class CompoUpgrade : Control
 	
 	/// Updates the button availability.
 	public void UpdateButton(int amount = -1){
-		if(upgrade.CanAfford()){
-			button.Disabled = false;
-			return;
-		}
-		button.Disabled = true;
+		UpdateButton();
 	}
 	public void UpdateButton(){
 		if(upgrade.CanAfford()){

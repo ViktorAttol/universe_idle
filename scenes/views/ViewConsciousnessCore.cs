@@ -19,11 +19,6 @@ public partial class ViewConsciousnessCore : View
 		Visible = false;
 		InitializeUpgrades();
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
 	
 	private void InitializeUpgrades(){
 		Upgrade[] upgrades = HandlerCCUpgrades.Instance.GetAllUpgrades();

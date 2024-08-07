@@ -6,6 +6,7 @@ using System;
 /// </Summary>
 public partial class Upgrade : Node
 {
+	/// Signal should be mostly used to upgrade ui elements.
 	[Signal]
 	public delegate void UpgradeLevelUpEventHandler();
 	

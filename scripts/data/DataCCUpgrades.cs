@@ -14,29 +14,17 @@ public partial class DataCCUpgrades : Resource
 	private bool _u03UnlockNebulas = false;
 	
 	public bool U01StardustGeneration {
-		get {
-			return _u01StardustGeneration;
-		}
-		set{
-			_u01StardustGeneration = value;
-		}
+		get {	return _u01StardustGeneration;		}
+		set{	_u01StardustGeneration = value;		}
 	}
 	
 	public int U02StardustBoostLevel {
-		get {
-			return _u02StardustBoostLevel;
-		}
-		set{
-			_u02StardustBoostLevel = value;
-		}
+		get {	return _u02StardustBoostLevel;		}
+		set{	_u02StardustBoostLevel = value;		}
 	}
 	
 	public bool U03UnlockNebulas {
-		get {
-			return _u03UnlockNebulas;
-		}
-		set{
-			_u03UnlockNebulas = value;
-		}
+		get {	return _u03UnlockNebulas;		}
+		set{	_u03UnlockNebulas = value;		}
 	}
 }

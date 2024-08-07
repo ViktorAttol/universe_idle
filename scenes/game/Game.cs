@@ -22,7 +22,6 @@ public partial class Game : Node
 	
 	public static Game Instance {
 		get {
-			
 			if(_instance == null) _instance = new Game();
 			return _instance;
 		}
@@ -47,11 +46,6 @@ public partial class Game : Node
 	{
 		UserInterface nodeUserInterface = sceneUserInterface.Instantiate() as UserInterface;
 		this.AddChild(nodeUserInterface);
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 	
 	/// Triggered when the save timer completes a loop. Sage Game

@@ -19,21 +19,15 @@ public partial class HandlerCCUpgrades : Node
 	
 	/// Properties which gives access to the upgrades.
 	public CCU01StardustGenerator U01StardustGeneration{
-		get{
-			return _u01StardustGeneration;
-		}
+		get{	return _u01StardustGeneration;	}
 	}
 	
 	public CCU02StardustBoost U02StardustBoost{
-		get{
-			return _u02StardustBoost;
-		}
+		get{	return _u02StardustBoost;	}
 	}
 
 	public CCU03UnlockNebulas U03UnlockNebulas{
-		get{
-			return _u03UnlockNebulas;
-		}
+		get{	return _u03UnlockNebulas;	}
 	}
 	
 	private HandlerCCUpgrades(){

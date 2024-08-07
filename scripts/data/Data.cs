@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+/// <Summary>
+/// Contains data to save and load.
+/// </Summary>
 public partial class Data : Resource
 {
 	/// Values have to be Export to save and load properly with Resource system.
@@ -15,35 +18,21 @@ public partial class Data : Resource
 	private DataCCUpgrades _ccUpgrades = new DataCCUpgrades();
 	
 	public int Up01Level {
-		get {
-			return _up01Level;
-		}
-		set{
-			_up01Level = value;
-		}
+		get {	return _up01Level;		}
+		set{	_up01Level = value;		}
 	}
 	public int ConsciousnessCore {
-		get {
-			return _consciousnessCore;
-		}
-		set{
-			_consciousnessCore = value;
-		}
+		get {	return _consciousnessCore;	}
+		set{	_consciousnessCore = value;	}
 	}
 	
 	public int Stardust {
-		get {
-			return _stardust;	
-		}
+		get {	return _stardust;	}
 	}
 	
 	public DataCCUpgrades CCUpgrades {
-		get {
-			return _ccUpgrades;
-		}
-		set{
-			_ccUpgrades = value;
-		}
+		get {	return _ccUpgrades;		}
+		set{	_ccUpgrades = value;	}
 	}
 	
 	public void AddStardust(int amount){
