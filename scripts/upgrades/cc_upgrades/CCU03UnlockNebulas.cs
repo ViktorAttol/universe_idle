@@ -8,7 +8,7 @@ public partial class CCU03UnlockNebulas : Upgrade
 {
 	private int maxLevel = 1;
 	
-	public CCU03UnlockNebulas() : base(Game.Instance.Data.CCUpgrades.U03UnlockNebulas ? 1 : 0, "Unlock Nebulas", 5){
+	public CCU03UnlockNebulas() : base(Game.Instance.Data.CCUpgrades.U03UnlockNebulas ? 1 : 0, "Unlock Nebulas", 2){
 		CalculateCost();
 	}
 	
@@ -36,7 +36,7 @@ public partial class CCU03UnlockNebulas : Upgrade
 	/// Consumes consciousness cores to level up.
 	public override void LevelUp(){
 		if(level >= maxLevel) return;
-		bool success = HandlerConsciousnessCore.Instance.ConsumeConsciousneddCores(cost);
+		bool success = HandlerConsciousnessCore.Instance.ConsumeConsciousnessCores(cost);
 		if(!success) return;
 		level ++;
 		Game.Instance.Data.CCUpgrades.U03UnlockNebulas = true;

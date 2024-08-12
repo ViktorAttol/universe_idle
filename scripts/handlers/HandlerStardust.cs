@@ -9,17 +9,19 @@ public partial class HandlerStardust : Node
 	private static HandlerStardust _instance;
 	
 	private HandlerStardust(){
-		
+		GD.Print("HandlerStardust created");
+		_instance = this;
 	}
 	
 	public static HandlerStardust Instance{
 		get{
+			if(_instance == null) _instance = new HandlerStardust();
 			return _instance;
-		}
+		} 
+		private set {}
 	}
 	
 	public override void _EnterTree(){
-		if(_instance == null) _instance = new HandlerStardust();
 	}
 	
 	// Called when the node enters the scene tree for the first time.
@@ -58,6 +60,7 @@ public partial class HandlerStardust : Node
 	/// Creates amount of stardust.
 	public void CreateStardust(int amount){
 		Game.Instance.Data.AddStardust(amount);
+		Game.Instance.Data.Universe.AddStardust(amount);
 		OnStardustCreated(amount);
 	}
 	

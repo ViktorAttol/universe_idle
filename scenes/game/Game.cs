@@ -17,12 +17,13 @@ public partial class Game : Node
 	private PackedScene sceneUserInterface;
 	
 	private Game(){
+		GD.Print("Game created");
+		_instance = this;
 		_data = new Data();
 	}
 	
 	public static Game Instance {
-		get {
-			if(_instance == null) _instance = new Game();
+		get { 
 			return _instance;
 		}
 	}
@@ -37,13 +38,14 @@ public partial class Game : Node
 	}
 	
 	public override void _EnterTree(){
-		if(_instance == null) _instance = new Game();
+		//if(_instance == null) _instance = new Game();
 		SaveSystem.LoadData();
 	}
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if(_instance == null) _instance = new Game();
 		UserInterface nodeUserInterface = sceneUserInterface.Instantiate() as UserInterface;
 		this.AddChild(nodeUserInterface);
 	}

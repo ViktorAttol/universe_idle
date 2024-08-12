@@ -8,14 +8,16 @@ public partial class Data : Resource
 {
 	/// Values have to be Export to save and load properly with Resource system.
 	[Export]
-	private int _stardust = 1;
+	private int _stardust = 0;
 	[Export]
 	private int _up01Level = 0;
 	[Export]
-	private int _consciousnessCore = 10;
-	
+	private int _consciousnessCore = 1;
 	[Export]
 	private DataCCUpgrades _ccUpgrades = new DataCCUpgrades();
+	/// Contains Universe data to dave and load.
+	[Export]
+	private DataUniverse _dataUniverse = new DataUniverse();
 	
 	public int Up01Level {
 		get {	return _up01Level;		}
@@ -33,6 +35,10 @@ public partial class Data : Resource
 	public DataCCUpgrades CCUpgrades {
 		get {	return _ccUpgrades;		}
 		set{	_ccUpgrades = value;	}
+	}
+	
+	public DataUniverse Universe {
+		get {	return _dataUniverse;		}
 	}
 	
 	public void AddStardust(int amount){

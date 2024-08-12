@@ -16,13 +16,12 @@ public partial class HandlerStardustGenerator : Node
 	private Timer timer;
 	
 	private HandlerStardustGenerator(){
-		
+		_instance = this;
+		GD.Print("StardustGenerator created");
 	}
 	
 	public static HandlerStardustGenerator Instance{
 		get{
-			
-			if(_instance == null) _instance = new HandlerStardustGenerator();
 			return _instance;
 		}
 	}

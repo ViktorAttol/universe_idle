@@ -36,7 +36,7 @@ public partial class CCU02StardustBoost : Upgrade
 	/// Consumes consciousness cores to level up.
 	public override void LevelUp(){
 		if(level >= maxLevel) return;
-		bool success = HandlerConsciousnessCore.Instance.ConsumeConsciousneddCores(cost);
+		bool success = HandlerConsciousnessCore.Instance.ConsumeConsciousnessCores(cost);
 		if(!success) return;
 		level ++;
 		//GD.Print("level: " + level);

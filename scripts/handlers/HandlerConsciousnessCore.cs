@@ -16,19 +16,21 @@ public partial class HandlerConsciousnessCore : Node
 	[Signal]
 	public delegate void ConsciousnessCoreConsumedEventHandler(int amount);
 	
+	/// Node managing stardust milestones, creatin consciousness core;
+	private StardustMilestones stardustMilestones = new StardustMilestones();
+	
 	private HandlerConsciousnessCore(){
-		
+		GD.Print("ConsciousnessCore handler created");
+		_instance = this;
 	}
 	
 	public static HandlerConsciousnessCore Instance{
 		get{
-			if(_instance == null) _instance = new HandlerConsciousnessCore();
 			return _instance;
 		}
 	}
 	
 	public override void _EnterTree(){
-		if(_instance == null) _instance = new HandlerConsciousnessCore();
 	}
 	
 	private void OnConsciousnessCoresCreated(int amount)
@@ -47,13 +49,14 @@ public partial class HandlerConsciousnessCore : Node
 	}
 	
 	/// Creates amount of ConsciousneddCores.
-	public void CreateConsciousneddCores(int amount){
+	public void CreateConsciousnessCores(int amount){
 		Game.Instance.Data.AddConsciousnessCores(amount);
+		Game.Instance.Data.Universe.AddConsciousnessCores(amount);
 		OnConsciousnessCoresCreated(amount);
 	}
 	
 	/// Consumes amount of ConsciousneddCores.
-	public bool ConsumeConsciousneddCores(int amount){
+	public bool ConsumeConsciousnessCores(int amount){
 		if(amount > Game.Instance.Data.ConsciousnessCore) return false;
 		Game.Instance.Data.SubtractConsciousnessCores(amount);
 		OnConsciousnessCoresConsumed(amount);

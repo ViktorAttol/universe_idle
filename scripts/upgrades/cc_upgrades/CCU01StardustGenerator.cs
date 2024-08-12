@@ -32,14 +32,14 @@ public partial class CCU01StardustGenerator : Upgrade
 	
 	/// Returns bool if upgrade can be bought.
 	public override bool CanAfford(){
-		if(Game.Instance.Data.Stardust >= cost && level < maxLevel) return true;
+		if(Game.Instance.Data.ConsciousnessCore >= cost && level < maxLevel) return true;
 		return false;
 	}
 	
 	/// Consumes stardust to level up.
 	public override void LevelUp(){
 		if(level >= maxLevel) return;
-		bool success = HandlerConsciousnessCore.Instance.ConsumeConsciousneddCores(cost);
+		bool success = HandlerConsciousnessCore.Instance.ConsumeConsciousnessCores(cost);
 		if(!success) return;
 		level ++;
 		Game.Instance.Data.CCUpgrades.U01StardustGeneration = true;
