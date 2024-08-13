@@ -10,7 +10,7 @@ public partial class CCU02StardustBoost : Upgrade
 	
 	public CCU02StardustBoost() : base(Game.Instance.Data.CCUpgrades.U02StardustBoostLevel, "Stardust Generator Efficiency", 1){
 		CalculateCost();
-		
+		if(!IsUnlocked()) HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp += OnCCU01LevelUp;
 	}
 	
 	/// Returns an String with the description of the upgrade.
@@ -45,5 +45,17 @@ public partial class CCU02StardustBoost : Upgrade
 		HandlerCCUpgrades.Instance.OnCCUpgradeLevelUp(this);
 		//EmitSignal(nameof(UpgradeLevelUp));
 		EmitSignal(SignalName.UpgradeLevelUp);
+	}
+	
+	/// Returns weather or not the upgrade has been unlocked..
+	public override bool IsUnlocked(){
+		if(Game.Instance.Data.CCUpgrades.U01StardustGeneration) return true;
+		return false;
+	}
+	
+	/// Triggered wehen CCU01 leveled up.
+	private void OnCCU01LevelUp(){
+		HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp -= OnCCU01LevelUp; 
+		HandlerCCUpgrades.Instance.OnUpgradeUnlocked(this);
 	}
 }

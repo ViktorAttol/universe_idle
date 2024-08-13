@@ -53,4 +53,9 @@ public partial class Upgrade : Node
 	public virtual void LevelUp(){
 		GD.PrintErr("LevelUp() method not defined!");
 	}
+	
+	/// Returns weather or not the upgrade has been unlocked..
+	public virtual bool IsUnlocked(){
+		return false;
+	}
 }

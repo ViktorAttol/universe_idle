@@ -18,15 +18,25 @@ public partial class ViewConsciousnessCore : View
 		base._Ready();
 		Visible = false;
 		InitializeUpgrades();
+		HandlerCCUpgrades.Instance.UpgradeUnlocked += OnUpgradeUnlocked;
 	}
 	
 	private void InitializeUpgrades(){
-		Upgrade[] upgrades = HandlerCCUpgrades.Instance.GetAllUpgrades();
+		Upgrade[] upgrades = HandlerCCUpgrades.Instance.GetAllUnlockedUpgrades();
 		foreach(Upgrade upgrade in upgrades){
 			CompoUpgrade upgradeNode = compoUpgradeScene.Instantiate() as CompoUpgrade;
 			
 			upgradeNode.SetUpgrade(upgrade);
 			ccuArea.AddChild(upgradeNode);
 		}
+	}
+	
+	/// Triggered when an upgrade unlocks. 
+	/// Deletes all upgrades nodes and initializes new ones.
+	private void OnUpgradeUnlocked(Upgrade upgrade){
+		foreach(Node child in ccuArea.GetChildren()){
+			child.QueueFree();
+		}
+		InitializeUpgrades();
 	}
 }

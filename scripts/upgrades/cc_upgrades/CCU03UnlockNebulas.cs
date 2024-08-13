@@ -10,6 +10,7 @@ public partial class CCU03UnlockNebulas : Upgrade
 	
 	public CCU03UnlockNebulas() : base(Game.Instance.Data.CCUpgrades.U03UnlockNebulas ? 1 : 0, "Unlock Nebulas", 2){
 		CalculateCost();
+		if(!IsUnlocked()) HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp += OnCCU01LevelUp;
 	}
 	
 	/// Returns an String with the description of the upgrade.
@@ -44,5 +45,17 @@ public partial class CCU03UnlockNebulas : Upgrade
 		HandlerCCUpgrades.Instance.OnCCUpgradeLevelUp(this);
 		//EmitSignal(nameof(UpgradeLevelUp));
 		EmitSignal(SignalName.UpgradeLevelUp);
+	}
+	
+	/// Returns weather or not the upgrade has been unlocked..
+	public override bool IsUnlocked(){
+		if(Game.Instance.Data.CCUpgrades.U01StardustGeneration) return true;
+		return false;
+	}
+	
+	/// Triggered wehen CCU01 leveled up.
+	private void OnCCU01LevelUp(){
+		HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp -= OnCCU01LevelUp; 
+		HandlerCCUpgrades.Instance.OnUpgradeUnlocked(this);
 	}
 }

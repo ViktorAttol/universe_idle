@@ -48,4 +48,9 @@ public partial class CCU01StardustGenerator : Upgrade
 		//EmitSignal(nameof(UpgradeLevelUp));
 		EmitSignal(SignalName.UpgradeLevelUp);
 	}
+	
+	/// Returns weather or not the upgrade has been unlocked..
+	public override bool IsUnlocked(){
+		return true;
+	}
 }

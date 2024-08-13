@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using System.Collections.Generic; 
 /// <Summary>
 /// Manages upgrades for consciousness cores.
 /// </Summary>
@@ -11,6 +11,9 @@ public partial class HandlerCCUpgrades : Node
 	/// Emitted when consciousness core is created.
 	[Signal]
 	public delegate void CCUpgradeLeveledUpEventHandler(Upgrade upgrade);
+	/// Emmitted when an upgrade is unlocked.
+	[Signal]
+	public delegate void UpgradeUnlockedEventHandler(Upgrade upgrade);
 
 	/// References to the upgrades.
 	private CCU01StardustGenerator _u01StardustGeneration;
@@ -44,6 +47,10 @@ public partial class HandlerCCUpgrades : Node
 		}
 	}
 	
+	public void OnUpgradeUnlocked(Upgrade upgrade){
+		EmitSignal(SignalName.UpgradeUnlocked, upgrade);
+	}
+	
 	/// Creates 
 	public override void _EnterTree(){
 		if(_instance == null) _instance = new HandlerCCUpgrades();
@@ -67,5 +74,13 @@ public partial class HandlerCCUpgrades : Node
 		if(_u02StardustBoost == null) _u02StardustBoost = new CCU02StardustBoost();	
 		if(_u03UnlockNebulas == null) _u03UnlockNebulas = new CCU03UnlockNebulas();	
 		return new Upgrade[] {_u01StardustGeneration, _u02StardustBoost, _u03UnlockNebulas};
+	}
+	
+	public Upgrade[] GetAllUnlockedUpgrades(){
+		List<Upgrade> upgradeList = new List<Upgrade>();
+		foreach(Upgrade upgrade in GetAllUpgrades()){
+			if(upgrade.IsUnlocked()) upgradeList.Add(upgrade);
+		}
+		return upgradeList.ToArray();
 	}
 }
