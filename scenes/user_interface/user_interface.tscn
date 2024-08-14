@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cymw4ua54w5u"]
+[gd_scene load_steps=9 format=3 uid="uid://cymw4ua54w5u"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/UserInterface.cs" id="1_r76l3"]
 [ext_resource type="PackedScene" uid="uid://cbrl0tofhjt3o" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_suk4g"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/user_interface/LabelConsciousnessCore.cs" id="3_gdu1f"]
 [ext_resource type="PackedScene" uid="uid://1nrscopws1b4" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_rlvq6"]
 [ext_resource type="PackedScene" uid="uid://cmu58it1ngbvx" path="res://scenes/views/consciousness_core_view.tscn" id="6_bx6ey"]
+[ext_resource type="PackedScene" uid="uid://bvawce80dikiu" path="res://scenes/views/universe/universe_view.tscn" id="8_3wsgu"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -57,16 +58,23 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 
 [node name="PrototypeGeneratorLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Generator"
 
 [node name="PrototypeClickerLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Clicker"
 
 [node name="PrototypeUpgrades" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Upgrades"
+
+[node name="UniverseLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Universe"
 
 [node name="ConsciousnessCoreLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -121,6 +129,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="PrototypeClicker" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("2_c6x55")]
+visible = false
 layout_mode = 1
 userInterface = NodePath("../../..")
 view = 1
@@ -136,10 +145,19 @@ layout_mode = 1
 userInterface = NodePath("../../..")
 
 [node name="ConsciousnessCoreView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("6_bx6ey")]
+visible = false
 layout_mode = 1
 userInterface = NodePath("../../..")
+view = 4
+
+[node name="UniverseView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("8_3wsgu")]
+visible = false
+layout_mode = 1
+userInterface = NodePath("../../..")
+view = 3
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgrades" to="." method="_on_prototype_upgrades_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/UniverseLink" to="." method="OnUniverseLinkPressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/ConsciousnessCoreLink" to="." method="OnConsciousnessCoreBtnPressed"]

@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvawce80dikiu"]
+
+[ext_resource type="Script" path="res://scenes/views/universe/ViewUniverse.cs" id="1_fbs04"]
+[ext_resource type="Script" path="res://scenes/views/universe/CompoActiveEffects.cs" id="2_ooe1c"]
+
+[node name="UniverseView" type="Control" node_paths=PackedStringArray("introText", "mainContent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fbs04")
+introText = NodePath("IntroText")
+mainContent = NodePath("MainMargin")
+
+[node name="MainMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="Label" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Universe"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MainMargin/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin/VBoxContainer/MarginContainer2" node_paths=PackedStringArray("stardustPerSecond")]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("2_ooe1c")
+stardustPerSecond = NodePath("StardustPerSecond")
+
+[node name="Label" type="Label" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Active Effects: "
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="StardustPerSecond" type="RichTextLabel" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Stardust/s[/b] <noValue>"
+fit_content = true
+
+[node name="Space" type="Control" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="StardustMilestones" type="Label" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Progress Toward Next Consciousness Core:"
+
+[node name="IntroText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -19.5
+offset_right = 183.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "Your Universe Istn't Active.
+Use Your First Consciousness Core To Awaken It."

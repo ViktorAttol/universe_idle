@@ -9,11 +9,18 @@ public partial class HandlerStardustGenerator : Node
 	private static HandlerStardustGenerator _instance;
 
 	/// 
-	private int generatorPower = 1;
-
+	private int _generatorPower = 1;
+	public int GeneratorPower{
+		get{
+			return _generatorPower;
+		}
+	}
 	/// Reference to the generator timer
 	[Export]
 	private Timer timer;
+	
+	[Signal]
+	public delegate void GeneratorPowerCalculatedEventHandler();
 	
 	private HandlerStardustGenerator(){
 		_instance = this;
@@ -44,7 +51,7 @@ public partial class HandlerStardustGenerator : Node
 	
 	private void _OnTimerTimeout()
 	{
-		HandlerStardust.Instance.CreateStardust(generatorPower);
+		HandlerStardust.Instance.CreateStardust(_generatorPower);
 	}
 	
 	/// Callback function to recalculate generatorPower when there is an ccupgrade.
@@ -78,7 +85,8 @@ public partial class HandlerStardustGenerator : Node
 	private void CalculateGeneratorPower(){
 		int newPower = 1;
 		newPower += Game.Instance.Data.CCUpgrades.U02StardustBoostLevel;
-		generatorPower = newPower;
+		_generatorPower = newPower;
+		EmitSignal(SignalName.GeneratorPowerCalculated);
 	}
 }
 
