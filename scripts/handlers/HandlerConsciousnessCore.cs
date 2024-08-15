@@ -17,7 +17,7 @@ public partial class HandlerConsciousnessCore : Node
 	public delegate void ConsciousnessCoreConsumedEventHandler(int amount);
 	
 	/// Node managing stardust milestones, creatin consciousness core;
-	private StardustMilestones stardustMilestones = new StardustMilestones();
+	private StardustMilestones _stardustMilestones = new StardustMilestones();
 	
 	private HandlerConsciousnessCore(){
 		GD.Print("ConsciousnessCore handler created");
@@ -27,6 +27,12 @@ public partial class HandlerConsciousnessCore : Node
 	public static HandlerConsciousnessCore Instance{
 		get{
 			return _instance;
+		}
+	}
+	
+	public StardustMilestones StardustMilestone{
+		get{
+			return _stardustMilestones;
 		}
 	}
 	

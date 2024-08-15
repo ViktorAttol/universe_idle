@@ -6,6 +6,14 @@ using System;
 /// </Summary>
 public partial class StardustMilestones : Node
 {
+	
+	/// Emitted when milestone progress changed.
+	[Signal]
+	public delegate void ProgressedEventHandler();
+		/// Emitted when new milestone is created.
+	[Signal]
+	public delegate void NewMilestoneCreatedEventHandler();
+	
 	/// Amount of sardust required to create the next consciousness core.
 	private int _stardustGoal = -1;
 	/// Amount of stardust generated in the last milestone.
@@ -14,6 +22,9 @@ public partial class StardustMilestones : Node
 	
 	/// Reference to the universe data.
 	private DataUniverse universe;
+	
+	public int StardustGoal{ get{ return _stardustGoal;	} }
+	public int StardustProgress{ get{ return _stardustProgress;	} }
 	
 	public StardustMilestones(){
 		//GD.Print("Milestones initialized");
@@ -36,6 +47,7 @@ public partial class StardustMilestones : Node
 		}
 		_stardustProgress = transferedProgress;
 		universe.StardustMilestoneProgress = _stardustProgress;
+		EmitSignal(SignalName.NewMilestoneCreated);		
 	}
 	
 	/// Checks for milestone completion.
@@ -44,13 +56,15 @@ public partial class StardustMilestones : Node
 		int stardustExcess = _stardustProgress - _stardustGoal;
 		HandlerConsciousnessCore.Instance.CreateConsciousnessCores(1);	
 		InitializeNewMilestone(stardustExcess);	
-		CheckForCompletion();
+		CheckForCompletion(); 
 	}
 	
 	/// Triggered when stardust is created. Progress the milestone.
 	private void OnStardustCreated(int amount){
 		_stardustProgress += amount;
 		universe.StardustMilestoneProgress = _stardustProgress;
+		EmitSignal(SignalName.Progressed);
+	
 		CheckForCompletion();
 		
 	}

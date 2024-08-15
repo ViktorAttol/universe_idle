@@ -37,6 +37,10 @@ public partial class CompoUpgrade : Control
 	{
 	}
 	
+	public override void _ExitTree(){
+		UnmountUpgrade();
+	}
+	
 	/// Updates every ui part of the component.
 	private void UpdateComponent(){
 		UpdateLabelTitle();
@@ -63,7 +67,7 @@ public partial class CompoUpgrade : Control
 	}
 		
 	/// Unmounts current upgrade.
-	private void UnmountUpgrade(){
+	public void UnmountUpgrade(){
 		HandlerStardust.Instance.StardustCreated -= UpdateButton;
 		HandlerStardust.Instance.StardustConsumed -= UpdateButton;
 		

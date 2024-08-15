@@ -34,7 +34,12 @@ public partial class ViewConsciousnessCore : View
 	/// Triggered when an upgrade unlocks. 
 	/// Deletes all upgrades nodes and initializes new ones.
 	private void OnUpgradeUnlocked(Upgrade upgrade){
+		int count = 0;
 		foreach(Node child in ccuArea.GetChildren()){
+			CompoUpgrade childAsUpgrade = (CompoUpgrade) child;
+			//GD.Print("childrencount: " + count + ", with name " + childAsUpgrade.labelTitle.Text);
+			count++;
+			childAsUpgrade.UnmountUpgrade();
 			child.QueueFree();
 		}
 		InitializeUpgrades();

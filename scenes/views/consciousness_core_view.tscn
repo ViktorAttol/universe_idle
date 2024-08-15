@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmu58it1ngbvx"]
+[gd_scene load_steps=4 format=3 uid="uid://cmu58it1ngbvx"]
 
 [ext_resource type="Script" path="res://scenes/views/ViewConsciousnessCore.cs" id="1_040q7"]
 [ext_resource type="PackedScene" uid="uid://c8fb30mrn8mm" path="res://scenes/prototypes/upgrades/components/compo_upgrade.tscn" id="2_wn4po"]
+[ext_resource type="PackedScene" uid="uid://duiap87jk0mgk" path="res://scenes/components/progress_bar.tscn" id="3_ssk3a"]
 
 [node name="ConsciousnessCoreView" type="Control" node_paths=PackedStringArray("ccuArea")]
 layout_mode = 3
@@ -29,7 +30,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 
 [node name="Header" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,4 +46,21 @@ theme_override_constants/margin_right = 16
 layout_mode = 2
 
 [node name="CCUpgrades" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="ProgressBar" parent="MarginContainer/VBoxContainer/MarginContainer2" instance=ExtResource("3_ssk3a")]
 layout_mode = 2
