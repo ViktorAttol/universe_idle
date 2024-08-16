@@ -6,8 +6,12 @@ using System;
 /// </Summary>
 public partial class Up01ClickerUpgrade: Upgrade
 {
-	public Up01ClickerUpgrade() : base(Game.Instance.Data.Up01Level, "Clicker Upgrade", 5){
+	public Up01ClickerUpgrade() : base(Game.Instance.Data.Up01Level, 5){
 		CalculateCost();
+	}
+	
+	public override String GetTitle(){
+		return "Clicker Upgrade";
 	}
 		
 	/// Returns an String with the description of the upgrade.

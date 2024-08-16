@@ -8,9 +8,14 @@ public partial class CCU03UnlockNebulas : Upgrade
 {
 	private int maxLevel = 1;
 	
-	public CCU03UnlockNebulas() : base(Game.Instance.Data.CCUpgrades.U03UnlockNebulas ? 1 : 0, "Unlock Nebulas", 2){
+	public CCU03UnlockNebulas() : base(Game.Instance.Data.CCUpgrades.U03UnlockNebulas ? 1 : 0, 2){
 		CalculateCost();
 		if(!IsUnlocked()) HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp += OnCCU01LevelUp;
+	}
+
+	public override String GetTitle(){
+		String text = "Unlock Nebulas ";
+		return text;
 	}
 	
 	/// Returns an String with the description of the upgrade.

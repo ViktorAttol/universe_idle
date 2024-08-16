@@ -78,8 +78,7 @@ public partial class CompoUpgrade : Control
 	
 	/// Updates the title of the upgrade.
 	public void UpdateLabelTitle(){
-		String text = upgrade.GetTitle() + " (" + upgrade.GetLevel() + ")";
-		labelTitle.Text = text;
+		labelTitle.Text = upgrade.GetTitle();
 	}
 	
 	public void UpdateLabelDescription(){

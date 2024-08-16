@@ -8,9 +8,16 @@ public partial class CCU02StardustBoost : Upgrade
 {
 	private int maxLevel = 5;
 	
-	public CCU02StardustBoost() : base(Game.Instance.Data.CCUpgrades.U02StardustBoostLevel, "Stardust Generator Efficiency", 1){
+	public CCU02StardustBoost() : base(Game.Instance.Data.CCUpgrades.U02StardustBoostLevel, 1){
 		CalculateCost();
 		if(!IsUnlocked()) HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp += OnCCU01LevelUp;
+	}
+	
+	private String[] levelsInRomanNumbers = {"", "I", "II", "III", "IV", "V"};
+	
+	public override String GetTitle(){
+		String text = "Stardust Generator Efficiency " + levelsInRomanNumbers[level];
+		return text;
 	}
 	
 	/// Returns an String with the description of the upgrade.

@@ -8,9 +8,13 @@ public partial class CCU01StardustGenerator : Upgrade
 {
 	private int maxLevel = 1;
 	
-	public CCU01StardustGenerator() : base(Game.Instance.Data.CCUpgrades.U01StardustGeneration ? 1 : 0, "Awakening Universe", 1){
+	public CCU01StardustGenerator() : base(Game.Instance.Data.CCUpgrades.U01StardustGeneration ? 1 : 0, 1){
 		CalculateCost();
 		
+	}
+	
+	public override String GetTitle(){
+		return  "Awakening Universe";
 	}
 	
 	/// Returns an String with the description of the upgrade.

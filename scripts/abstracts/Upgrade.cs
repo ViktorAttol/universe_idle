@@ -11,13 +11,11 @@ public partial class Upgrade : Node
 	public delegate void UpgradeLevelUpEventHandler();
 	
 	protected int level = -1;
-	protected String title = "Not Defined";
 	protected int baseCost = -1;
 	protected int cost = -1;
 	
-	public Upgrade(int level, String title, int baseCost){
+	public Upgrade(int level,int baseCost){
 		this.level = level;
-		this.title = title;
 		this.baseCost = baseCost;
 	}
 	
@@ -25,8 +23,8 @@ public partial class Upgrade : Node
 		return level;
 	}
 	
-	public String GetTitle(){
-		return title;
+	public virtual String GetTitle(){
+		return "Not Defined";
 	}
 	
 	public int GetBaseCost(){
