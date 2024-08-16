@@ -65,4 +65,10 @@ public partial class CCU02StardustBoost : Upgrade
 		HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp -= OnCCU01LevelUp; 
 		HandlerCCUpgrades.Instance.OnUpgradeUnlocked(this);
 	}
+	
+	/// Returns weather or not the upgrade has been disabled.
+	public override bool IsDisabled(){
+		if(level >= maxLevel) return true;
+		return false;
+	}
 }

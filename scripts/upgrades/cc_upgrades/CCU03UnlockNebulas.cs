@@ -63,4 +63,9 @@ public partial class CCU03UnlockNebulas : Upgrade
 		HandlerCCUpgrades.Instance.U01StardustGeneration.UpgradeLevelUp -= OnCCU01LevelUp; 
 		HandlerCCUpgrades.Instance.OnUpgradeUnlocked(this);
 	}
+	
+	/// Returns weather or not the upgrade has been disabled.
+	public override bool IsDisabled(){
+		return Game.Instance.Data.CCUpgrades.U03UnlockNebulas;
+	}
 }

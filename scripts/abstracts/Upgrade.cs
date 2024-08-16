@@ -56,4 +56,9 @@ public partial class Upgrade : Node
 	public virtual bool IsUnlocked(){
 		return false;
 	}
+	
+	/// Returns weather or not the upgrade has been disabled.
+	public virtual bool IsDisabled(){
+		return false;
+	}
 }

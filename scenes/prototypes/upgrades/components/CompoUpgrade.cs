@@ -16,6 +16,9 @@ public partial class CompoUpgrade : Control
 	[Export]
 	public Button button;
 	
+	[Export]
+	public ColorRect veil;
+	
 	/// Upgrade to display.
 	private Upgrade upgrade;
 	
@@ -64,6 +67,7 @@ public partial class CompoUpgrade : Control
 		upgrade.UpgradeLevelUp += UpdateLabelTitle;
 		upgrade.UpgradeLevelUp += UpdateLabelDescription;
 		upgrade.UpgradeLevelUp += UpdateButton;
+		upgrade.UpgradeLevelUp += UpdateVeil;		
 	}
 		
 	/// Unmounts current upgrade.
@@ -74,6 +78,7 @@ public partial class CompoUpgrade : Control
 		upgrade.UpgradeLevelUp -= UpdateLabelTitle;
 		upgrade.UpgradeLevelUp -= UpdateLabelDescription;
 		upgrade.UpgradeLevelUp -= UpdateButton;
+		upgrade.UpgradeLevelUp -= UpdateVeil;		
 	}
 	
 	/// Updates the title of the upgrade.
@@ -95,6 +100,12 @@ public partial class CompoUpgrade : Control
 			return;
 		}
 		button.Disabled = true;
+	}
+	
+	private void UpdateVeil(){
+		GD.Print("UpdateVeil is called");
+		if(upgrade.IsDisabled()) veil.Visible = true;
+		else veil.Visible = false;
 	}
 	
 	/// Triggered when the purchase button is pressed.

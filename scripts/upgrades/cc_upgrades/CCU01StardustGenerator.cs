@@ -57,4 +57,9 @@ public partial class CCU01StardustGenerator : Upgrade
 	public override bool IsUnlocked(){
 		return true;
 	}
+	
+	/// Returns weather or not the upgrade has been disabled.
+	public override bool IsDisabled(){
+		return Game.Instance.Data.CCUpgrades.U01StardustGeneration;
+	}
 }

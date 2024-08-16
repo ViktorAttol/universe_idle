@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/prototypes/upgrades/components/CompoUpgrade.cs" id="1_yxr6o"]
 
-[node name="CompoUpgrade" type="Control" node_paths=PackedStringArray("labelTitle", "labelDescription", "button")]
+[node name="CompoUpgrade" type="Control" node_paths=PackedStringArray("labelTitle", "labelDescription", "button", "veil")]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 3
 anchors_preset = 14
@@ -16,6 +16,7 @@ script = ExtResource("1_yxr6o")
 labelTitle = NodePath("MarginContainer/HBoxContainer/Infos/VBoxContainer/Title")
 labelDescription = NodePath("MarginContainer/HBoxContainer/Infos/VBoxContainer/Description")
 button = NodePath("MarginContainer/HBoxContainer/PurchaseBtn")
+veil = NodePath("Veil")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -72,5 +73,15 @@ fit_content = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 text = "Purchase"
+
+[node name="Veil" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.643137)
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/PurchaseBtn" to="." method="OnPurchaseBtnPressed"]
