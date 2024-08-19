@@ -18,11 +18,14 @@ public partial class CompoStardustMilestoneProgress : ProgressBar
 		//base._Ready();
 		ConnectSignals();
 	}
+	
+	/// Connect callbacks.
 	private void ConnectSignals(){
 		milestone.Progressed += OnMilestoneChanged;
 		milestone.NewMilestoneCreated += OnMilestoneChanged;
 	}
 	
+	/// Updates the state of the progress bar.
 	private void UpdateProgress(){
 		MaxValue = milestone.StardustGoal;
 		Value = milestone.StardustProgress;

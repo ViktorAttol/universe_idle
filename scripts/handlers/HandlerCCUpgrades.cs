@@ -76,6 +76,7 @@ public partial class HandlerCCUpgrades : Node
 		return new Upgrade[] {_u01StardustGeneration, _u02StardustBoost, _u03UnlockNebulas};
 	}
 	
+	/// Returns all unlocked Upgrades.
 	public Upgrade[] GetAllUnlockedUpgrades(){
 		List<Upgrade> upgradeList = new List<Upgrade>();
 		foreach(Upgrade upgrade in GetAllUpgrades()){
