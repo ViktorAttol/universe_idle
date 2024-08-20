@@ -27,8 +27,7 @@ public partial class CompoUpgrade : Control
 	{
 		if(upgrade == null) upgrade = new Up01ClickerUpgrade();
 		UpdateComponent();
-		
-		MountUpgrade();
+		if(!upgrade.IsDisabled())	MountUpgrade();
 		//upgrade.Upgrade01LevelUp += UpdateLabelTitle;
 		//upgrade.Upgrade01LevelUp += UpdateLabelDescription;
 		//upgrade.Upgrade01LevelUp += UpdateButton;
@@ -49,6 +48,7 @@ public partial class CompoUpgrade : Control
 		UpdateLabelTitle();
 		UpdateLabelDescription();
 		UpdateButton();	
+		UpdateVeil();
 	}
 	
 	/// Sets ne upgrade.
@@ -64,10 +64,7 @@ public partial class CompoUpgrade : Control
 		HandlerStardust.Instance.StardustCreated += UpdateButton;
 		HandlerStardust.Instance.StardustConsumed += UpdateButton;
 		
-		upgrade.UpgradeLevelUp += UpdateLabelTitle;
-		upgrade.UpgradeLevelUp += UpdateLabelDescription;
-		upgrade.UpgradeLevelUp += UpdateButton;
-		upgrade.UpgradeLevelUp += UpdateVeil;		
+		upgrade.UpgradeLevelUp += UpdateComponent;	
 	}
 		
 	/// Unmounts current upgrade.
@@ -75,10 +72,7 @@ public partial class CompoUpgrade : Control
 		HandlerStardust.Instance.StardustCreated -= UpdateButton;
 		HandlerStardust.Instance.StardustConsumed -= UpdateButton;
 		
-		upgrade.UpgradeLevelUp -= UpdateLabelTitle;
-		upgrade.UpgradeLevelUp -= UpdateLabelDescription;
-		upgrade.UpgradeLevelUp -= UpdateButton;
-		upgrade.UpgradeLevelUp -= UpdateVeil;		
+		upgrade.UpgradeLevelUp -= UpdateComponent;	
 	}
 	
 	/// Updates the title of the upgrade.
@@ -103,7 +97,6 @@ public partial class CompoUpgrade : Control
 	}
 	
 	private void UpdateVeil(){
-		GD.Print("UpdateVeil is called");
 		if(upgrade.IsDisabled()) veil.Visible = true;
 		else veil.Visible = false;
 	}
@@ -112,6 +105,13 @@ public partial class CompoUpgrade : Control
 	private void OnPurchaseBtnPressed()
 	{
 		upgrade.LevelUp();
+	}
+	
+	/// Triggered when the upgrade levels up.
+	/// Update the component and check if the signals must be disconnected or not.
+	private void OnUpgradeLevelUp(){
+		UpdateComponent();
+		if(upgrade.IsDisabled()) UnmountUpgrade();
 	}
 }
 
