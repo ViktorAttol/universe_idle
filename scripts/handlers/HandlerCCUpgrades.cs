@@ -38,7 +38,7 @@ public partial class HandlerCCUpgrades : Node
 		_u01StardustGeneration = new CCU01StardustGenerator();
 		_u02StardustBoost = new CCU02StardustBoost();
 		_u03UnlockNebulas = new CCU03UnlockNebulas();
-		GD.Print("CCUpgrades created");
+		//GD.Print("CCUpgrades created");
 	}
 	
 	public static HandlerCCUpgrades Instance{

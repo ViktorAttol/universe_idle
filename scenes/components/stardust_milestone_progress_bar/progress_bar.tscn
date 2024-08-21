@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://duiap87jk0mgk"]
 
-[ext_resource type="Script" path="res://scenes/views/universe/CompoStardustMilestoneProgress.cs" id="1_27yib"]
+[ext_resource type="Script" path="res://scenes/views/universe/CompoStardustMilestoneProgress.cs" id="1_4nsut"]
 
 [node name="ProgressBar" type="ProgressBar" node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(0, 32)
 show_percentage = false
-script = ExtResource("1_27yib")
+script = ExtResource("1_4nsut")
 label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]

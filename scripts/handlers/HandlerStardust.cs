@@ -9,7 +9,7 @@ public partial class HandlerStardust : Node
 	private static HandlerStardust _instance;
 	
 	private HandlerStardust(){
-		GD.Print("HandlerStardust created");
+		//GD.Print("HandlerStardust created");
 		_instance = this;
 	}
 	
@@ -70,13 +70,5 @@ public partial class HandlerStardust : Node
 		Game.Instance.Data.SubtractStardust(amount);
 		OnStardustConsumed(amount);
 		return true;
-	}
-	
-	/// Triggered by the Clicker. Creates stardust.
-	public void TriggerClicker(){
-		int amount = 1;
-		amount += Game.Instance.Data.Up01Level;
-		
-		CreateStardust(amount);
 	}
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8fb30mrn8mm"]
 
-[ext_resource type="Script" path="res://scenes/prototypes/upgrades/components/CompoUpgrade.cs" id="1_yxr6o"]
+[ext_resource type="Script" path="res://scenes/components/upgrade/CompoUpgrade.cs" id="1_n40y6"]
 
 [node name="CompoUpgrade" type="Control" node_paths=PackedStringArray("labelTitle", "labelDescription", "button", "veil")]
 custom_minimum_size = Vector2(0, 160)
@@ -12,7 +12,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-script = ExtResource("1_yxr6o")
+script = ExtResource("1_n40y6")
 labelTitle = NodePath("MarginContainer/HBoxContainer/Infos/VBoxContainer/Title")
 labelDescription = NodePath("MarginContainer/HBoxContainer/Infos/VBoxContainer/Description")
 button = NodePath("MarginContainer/HBoxContainer/PurchaseBtn")

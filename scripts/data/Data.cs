@@ -10,8 +10,6 @@ public partial class Data : Resource
 	[Export]
 	private int _stardust = 0;
 	[Export]
-	private int _up01Level = 0;
-	[Export]
 	private int _consciousnessCore = 1;
 	[Export]
 	private DataCCUpgrades _ccUpgrades = new DataCCUpgrades();
@@ -19,19 +17,15 @@ public partial class Data : Resource
 	[Export]
 	private DataUniverse _dataUniverse = new DataUniverse();
 	
-	public int Up01Level {
-		get {	return _up01Level;		}
-		set{	_up01Level = value;		}
-	}
-	public int ConsciousnessCore {
-		get {	return _consciousnessCore;	}
-		set{	_consciousnessCore = value;	}
-	}
-	
 	public int Stardust {
 		get {	return _stardust;	}
 	}
 	
+	public int ConsciousnessCore {
+		get {	return _consciousnessCore;	}
+		set{	_consciousnessCore = value;	}
+	}
+
 	public DataCCUpgrades CCUpgrades {
 		get {	return _ccUpgrades;		}
 		set{	_ccUpgrades = value;	}

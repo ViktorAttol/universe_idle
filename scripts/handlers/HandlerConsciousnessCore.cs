@@ -20,7 +20,7 @@ public partial class HandlerConsciousnessCore : Node
 	private StardustMilestones _stardustMilestones = new StardustMilestones();
 	
 	private HandlerConsciousnessCore(){
-		GD.Print("ConsciousnessCore handler created");
+		//GD.Print("ConsciousnessCore handler created");
 		_instance = this;
 	}
 	

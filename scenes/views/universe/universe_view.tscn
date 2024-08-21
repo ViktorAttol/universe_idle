@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvawce80dikiu"]
 
 [ext_resource type="Script" path="res://scenes/views/universe/ViewUniverse.cs" id="1_fbs04"]
-[ext_resource type="Script" path="res://scenes/components/CompoActiveEffects.cs" id="2_81l05"]
-[ext_resource type="PackedScene" uid="uid://duiap87jk0mgk" path="res://scenes/components/progress_bar.tscn" id="3_yb1ik"]
+[ext_resource type="Script" path="res://scenes/components/active_effects/CompoActiveEffects.cs" id="2_ld2r3"]
+[ext_resource type="PackedScene" uid="uid://duiap87jk0mgk" path="res://scenes/components/stardust_milestone_progress_bar/progress_bar.tscn" id="3_kjtid"]
 
 [node name="UniverseView" type="Control" node_paths=PackedStringArray("introText", "mainContent")]
 layout_mode = 3
@@ -53,7 +53,7 @@ theme_override_constants/margin_right = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMargin/VBoxContainer/MarginContainer2" node_paths=PackedStringArray("stardustPerSecond")]
 layout_mode = 2
 theme_override_constants/separation = 16
-script = ExtResource("2_81l05")
+script = ExtResource("2_ld2r3")
 stardustPerSecond = NodePath("StardustPerSecond")
 
 [node name="Label" type="Label" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
@@ -97,7 +97,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_right = 64
 
-[node name="ProgressBar" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3" instance=ExtResource("3_yb1ik")]
+[node name="ProgressBar" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3" instance=ExtResource("3_kjtid")]
 layout_mode = 2
 
 [node name="IntroText" type="Label" parent="."]

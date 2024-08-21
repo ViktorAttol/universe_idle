@@ -24,7 +24,7 @@ public partial class HandlerStardustGenerator : Node
 	
 	private HandlerStardustGenerator(){
 		_instance = this;
-		GD.Print("StardustGenerator created");
+		//GD.Print("StardustGenerator created");
 	}
 	
 	public static HandlerStardustGenerator Instance{

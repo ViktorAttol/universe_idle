@@ -17,7 +17,7 @@ public partial class Game : Node
 	private PackedScene sceneUserInterface;
 	
 	private Game(){
-		GD.Print("Game created");
+		//GD.Print("Game created");
 		_instance = this;
 		_data = new Data();
 	}

@@ -25,7 +25,6 @@ public partial class CompoUpgrade : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		if(upgrade == null) upgrade = new Up01ClickerUpgrade();
 		UpdateComponent();
 		if(!upgrade.IsDisabled())	MountUpgrade();
 		//upgrade.Upgrade01LevelUp += UpdateLabelTitle;
