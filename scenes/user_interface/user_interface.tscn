@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cymw4ua54w5u"]
+[gd_scene load_steps=8 format=3 uid="uid://cymw4ua54w5u"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/UserInterface.cs" id="1_r76l3"]
+[ext_resource type="Script" path="res://scenes/user_interface/NebulasLinkButton.cs" id="2_hidfh"]
 [ext_resource type="Script" path="res://scenes/user_interface/StardustLabel.cs" id="2_s8rip"]
 [ext_resource type="Script" path="res://scenes/user_interface/LabelConsciousnessCore.cs" id="3_gdu1f"]
-[ext_resource type="PackedScene" uid="uid://cmu58it1ngbvx" path="res://scenes/views/consciousness_core_view.tscn" id="6_bx6ey"]
+[ext_resource type="PackedScene" uid="uid://cmu58it1ngbvx" path="res://scenes/views/consciousness_core/consciousness_core_view.tscn" id="5_0cmng"]
+[ext_resource type="PackedScene" uid="uid://f1dlusjm0rol" path="res://scenes/views/nebulas/nebulas_view.tscn" id="7_rl76f"]
 [ext_resource type="PackedScene" uid="uid://bvawce80dikiu" path="res://scenes/views/universe/universe_view.tscn" id="8_3wsgu"]
 
 [node name="UserInterface" type="Control"]
@@ -62,6 +64,11 @@ text = "Universe"
 layout_mode = 2
 text = "Consciousness Core"
 
+[node name="LinkNebulasLinkButton" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "NebulasLink"
+script = ExtResource("2_hidfh")
+
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -110,15 +117,22 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ConsciousnessCoreView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("6_bx6ey")]
+[node name="ConsciousnessCoreView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("5_0cmng")]
 visible = false
 layout_mode = 1
 userInterface = NodePath("../../..")
 view = 1
 
 [node name="UniverseView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("8_3wsgu")]
+visible = false
 layout_mode = 1
 userInterface = NodePath("../../..")
 
+[node name="NebulasView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("userInterface") instance=ExtResource("7_rl76f")]
+layout_mode = 1
+userInterface = NodePath("../../..")
+view = 2
+
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/UniverseLink" to="." method="OnUniverseLinkPressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/ConsciousnessCoreLink" to="." method="OnConsciousnessCoreBtnPressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/LinkNebulasLinkButton" to="." method="OnNebulasLinkPressed"]

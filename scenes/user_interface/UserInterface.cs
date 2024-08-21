@@ -10,6 +10,7 @@ public partial class UserInterface : Control
 	public enum Views{
 		UNIVERSE, 
 		CONSCIOUSNESS_CORE,
+		NEBULAS,
 	}
 	/// Signal cb für navigation requests 
 	[Signal]
@@ -28,7 +29,15 @@ public partial class UserInterface : Control
 	{
 		EmitSignal(SignalName.navigation_requested, (int)Views.UNIVERSE);	
 	}
+	
+	private void OnNebulasLinkPressed()
+	{
+		EmitSignal(SignalName.navigation_requested, (int)Views.NEBULAS);	
+	}
 }
+
+
+
 
 
 
