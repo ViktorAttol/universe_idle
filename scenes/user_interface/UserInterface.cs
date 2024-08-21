@@ -8,9 +8,6 @@ public partial class UserInterface : Control
 {
 	/// List of possible views
 	public enum Views{
-		PROTOTYPE_GENERATOR, 
-		PROTOTYPE_CLICKER, 
-		PROTOTYPE_UPGRADES,
 		UNIVERSE, 
 		CONSCIOUSNESS_CORE,
 	}
@@ -21,28 +18,12 @@ public partial class UserInterface : Control
 	public override void _Ready(){
 		EmitSignal(SignalName.navigation_requested, (int)Views.UNIVERSE);
 	}
-	
-	private void _on_prototype_generator_link_pressed()
-	{
-		EmitSignal(SignalName.navigation_requested, (int)Views.PROTOTYPE_GENERATOR);
-	}
-
-	private void _on_prototype_clicker_link_pressed()
-	{
-		EmitSignal(SignalName.navigation_requested, (int)Views.PROTOTYPE_CLICKER);	
-	}
-	
-	private void _on_prototype_upgrades_pressed()
-	{
-		EmitSignal(SignalName.navigation_requested, (int)Views.PROTOTYPE_UPGRADES);	
-	}
-	
+		
 	private void OnConsciousnessCoreBtnPressed()
 	{
 		EmitSignal(SignalName.navigation_requested, (int)Views.CONSCIOUSNESS_CORE);	
 	}
-	
-	
+		
 	private void OnUniverseLinkPressed()
 	{
 		EmitSignal(SignalName.navigation_requested, (int)Views.UNIVERSE);	
