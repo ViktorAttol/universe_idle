@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://diau0ty5l4wkm"]
+[gd_scene load_steps=8 format=3 uid="uid://diau0ty5l4wkm"]
 
 [ext_resource type="Script" path="res://scenes/game/Game.cs" id="1_x4mtv"]
 [ext_resource type="PackedScene" uid="uid://cymw4ua54w5u" path="res://scenes/user_interface/user_interface.tscn" id="2_g4avl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/handlers/HandlerConsciousnessCore.cs" id="3_qnfnv"]
 [ext_resource type="Script" path="res://scripts/handlers/HandlerCCUpgrades.cs" id="4_bee61"]
 [ext_resource type="Script" path="res://scripts/handlers/HandlerStardustGenerator.cs" id="6_mtji0"]
+[ext_resource type="Script" path="res://scripts/handlers/HandlerNebulas.cs" id="7_egylj"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_x4mtv")
@@ -27,6 +28,9 @@ script = ExtResource("6_mtji0")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Handlers/StardustGenerator"]
+
+[node name="Nebulas" type="Node" parent="Handlers"]
+script = ExtResource("7_egylj")
 
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 5.0

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 /// <Summary>
 /// Contains data to save and load.
@@ -16,6 +17,9 @@ public partial class Data : Resource
 	/// Contains Universe data to dave and load.
 	[Export]
 	private DataUniverse _dataUniverse = new DataUniverse();
+	/// List of nebulas
+	[Export]
+	private DataNebula[] _nebulas = new DataNebula[]{};
 	
 	public int Stardust {
 		get {	return _stardust;	}
@@ -35,6 +39,10 @@ public partial class Data : Resource
 		get {	return _dataUniverse;		}
 	}
 	
+	public DataNebula[] Nebulas {
+		get {	return _nebulas;		}
+	}
+	
 	public void AddStardust(int amount){
 		_stardust += amount;
 	}
@@ -49,5 +57,11 @@ public partial class Data : Resource
 	
 	public void SubtractConsciousnessCores(int amount){
 		_consciousnessCore -= amount;
+	}
+	
+	public void AddNebula(DataNebula newNebulaData){
+		List<DataNebula> nebulaList = new List<DataNebula>(_nebulas);
+		nebulaList.Add(newNebulaData);
+		_nebulas = nebulaList.ToArray();
 	}
 }
