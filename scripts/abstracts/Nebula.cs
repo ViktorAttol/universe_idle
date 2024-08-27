@@ -42,6 +42,8 @@ public partial class Nebula : Node
 		_stardustConsumed = stardustConsumed;
 	}
 	
+	/// Returns the data of the nebula as an DataNebula object.
+	/// Todo refactor later to be a static helper class method.
 	public DataNebula GetNebulaData(){
 		return new DataNebula(_givenName, _stardust, _stardustConsumed);
 	}
