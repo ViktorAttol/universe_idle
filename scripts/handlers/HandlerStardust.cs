@@ -65,6 +65,7 @@ public partial class HandlerStardust : Node
 	}
 	
 	/// Consumes amount of stardust.
+	/// returns true if successfull and false if not.
 	public bool ConsumeStardust(int amount){
 		if(amount > Game.Instance.Data.Stardust) return false;
 		Game.Instance.Data.SubtractStardust(amount);

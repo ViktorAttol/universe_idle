@@ -8,6 +8,9 @@ public partial class HandlerNebulas : Node
 {
 	private static HandlerNebulas _instance;
 	
+	[Export]
+	private Timer timer;
+	
 	private List<Nebula> nebulas = new List<Nebula>();
 	
 	/// When the szene is created, an instance of this class will be created with the normal constructor
@@ -35,6 +38,7 @@ public partial class HandlerNebulas : Node
 		int indexNebula = 0;
 		foreach(DataNebula nebulaData in Game.Instance.Data.Nebulas){
 			Nebula newNebula = new Nebula(nebulaData.Name, indexNebula, nebulaData.Stardust, nebulaData.StardustConsumed);
+			timer.Timeout += newNebula.OnConsumeStardust;
 			nebulas.Add(newNebula);
 			indexNebula++;
 		}
@@ -46,9 +50,10 @@ public partial class HandlerNebulas : Node
 	}
 	
 	/// Create a new Nebula and add it to the list.
-	private void CreateNebula(){
+	public void CreateNebula(){
 		Nebula newNebula = new Nebula();
 		newNebula.DataIndex = nebulas.Count;
+		timer.Timeout += newNebula.OnConsumeStardust;
 		nebulas.Add(newNebula);
 		Game.Instance.Data.AddNebula(newNebula.GetNebulaData());
 	}

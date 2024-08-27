@@ -29,8 +29,12 @@ timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Handlers/StardustGenerator"]
 
-[node name="Nebulas" type="Node" parent="Handlers"]
+[node name="Nebulas" type="Node" parent="Handlers" node_paths=PackedStringArray("timer")]
 script = ExtResource("7_egylj")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Handlers/Nebulas"]
+autostart = true
 
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 5.0

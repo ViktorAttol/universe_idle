@@ -46,7 +46,12 @@ public partial class Nebula : Node
 		return new DataNebula(_givenName, _stardust, _stardustConsumed);
 	}
 	
-	private void OnConsumeStardust(){
+	/// Tries to consume stardust.
+	public void OnConsumeStardust(){
+		bool success = HandlerStardust.Instance.ConsumeStardust(_stardustConsumed);
+		if(!success) return;
 		
+		_stardust += _stardustConsumed;
+		Game.Instance.Data.Nebulas[_dataIndex].Stardust = _stardust;
 	}
 }

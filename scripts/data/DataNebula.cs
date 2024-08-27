@@ -30,6 +30,7 @@ public partial class DataNebula : Resource
 
 	public int Stardust{
 		get { return _stardust; }
+		set{ _stardust = value; }
 	}
 
 	public int StardustConsumed{

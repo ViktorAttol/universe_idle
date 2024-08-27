@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://f1dlusjm0rol"]
+[gd_scene load_steps=3 format=3 uid="uid://f1dlusjm0rol"]
 
 [ext_resource type="Script" path="res://scenes/views/nebulas/ViewNebulas.cs" id="1_djfc4"]
+[ext_resource type="Script" path="res://scenes/views/nebulas/CompoNebula.cs" id="2_k5gmq"]
 
 [node name="NebulasView" type="Control"]
 layout_mode = 3
@@ -58,3 +59,58 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Create a New Nebula"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Nebula" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("labelName", "labelComposition", "consumptionSlider")]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("2_k5gmq")
+labelName = NodePath("NebulaName")
+labelComposition = NodePath("Composition")
+consumptionSlider = NodePath("MarginContainer2/HSlider")
+
+[node name="NebulaName" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer/Nebula"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Nebula Name"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer/Nebula"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer/Nebula/MarginContainer"]
+layout_mode = 2
+
+[node name="Composition" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer/Nebula"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Stardust:[/b] <no_value>"
+fit_content = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer/Nebula"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer/Nebula/MarginContainer2"]
+layout_mode = 2
+max_value = 5.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer/Button" to="." method="OnCreateNebulaBtnPressed"]
