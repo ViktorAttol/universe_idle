@@ -11,7 +11,7 @@ public partial class Data : Resource
 	[Export]
 	private int _stardust = 0;
 	[Export]
-	private int _consciousnessCore = 1;
+	private int _consciousnessCore = 5;
 	[Export]
 	private DataCCUpgrades _ccUpgrades = new DataCCUpgrades();
 	/// Contains Universe data to dave and load.

@@ -8,10 +8,18 @@ public partial class HandlerNebulas : Node
 {
 	private static HandlerNebulas _instance;
 	
+	/// Emitted when composition ist updated.
+	[Signal]
+	public delegate void NebulaCreatedEventHandler();
+	
 	[Export]
 	private Timer timer;
 	
 	private List<Nebula> nebulas = new List<Nebula>();
+	
+	public List<Nebula> Nebulas {
+		get{ return nebulas; }
+	}
 	
 	/// When the szene is created, an instance of this class will be created with the normal constructor
 	/// because the Nebulas Node under Handlers has this as a script attached.
@@ -37,9 +45,10 @@ public partial class HandlerNebulas : Node
 		nebulas.Clear();
 		int indexNebula = 0;
 		foreach(DataNebula nebulaData in Game.Instance.Data.Nebulas){
-			Nebula newNebula = new Nebula(nebulaData.Name, indexNebula, nebulaData.Stardust, nebulaData.StardustConsumed);
-			timer.Timeout += newNebula.OnConsumeStardust;
-			nebulas.Add(newNebula);
+			ConstructNebula(indexNebula, nebulaData);
+			//Nebula newNebula = new Nebula(nebulaData, indexNebula);
+			//timer.Timeout += newNebula.OnConsumeStardust;
+			//nebulas.Add(newNebula);
 			indexNebula++;
 		}
 	}
@@ -51,10 +60,38 @@ public partial class HandlerNebulas : Node
 	
 	/// Create a new Nebula and add it to the list.
 	public void CreateNebula(){
-		Nebula newNebula = new Nebula();
-		newNebula.DataIndex = nebulas.Count;
+		ConstructNebula(nebulas.Count);
+		//Nebula newNebula = new Nebula();
+		//newNebula.DataIndex = nebulas.Count;
+		//timer.Timeout += newNebula.OnConsumeStardust;
+		//nebulas.Add(newNebula);
+		//Game.Instance.Data.AddNebula(newNebula.GetNebulaData());
+	}
+	
+	private void ConstructNebula(int index, DataNebula nebulaData = null){
+		Nebula newNebula;
+		if(nebulaData == null) {
+			newNebula = new Nebula();
+			newNebula.DataIndex = index;
+		}
+		else newNebula = new Nebula(nebulaData, index);
+		
 		timer.Timeout += newNebula.OnConsumeStardust;
 		nebulas.Add(newNebula);
-		Game.Instance.Data.AddNebula(newNebula.GetNebulaData());
+		
+		if(nebulaData == null) {
+			Game.Instance.Data.AddNebula(newNebula.GetNebulaData());
+			OnNebulaCreated();
+		}
+	}
+	
+	/// Changes the stardust consumption value of the single nebula.
+	public void UpdateNebulaStardustConsumptionValue(int index, int value){
+		nebulas[index].StardustConsumed = value;
+		Game.Instance.Data.Nebulas[index].StardustConsumed = value;
+	}
+	
+	public void OnNebulaCreated(){
+		EmitSignal(SignalName.NebulaCreated);
 	}
 }

@@ -6,6 +6,9 @@ using System;
 /// </Summary>
 public partial class Nebula : Node
 {
+	/// Emitted when composition ist updated.
+	[Signal]
+	public delegate void CompositionUpdatedEventHandler();
 	/// Name of nebula
 	private String _givenName = "Unnamed Nebulas";
 	/// Index of the nebula in data
@@ -31,16 +34,23 @@ public partial class Nebula : Node
 	
 	public int StardustConsumed{
 		get { return _stardustConsumed; }
+		set { _stardustConsumed = value; }
 	}
 	
 	public Nebula(){}
-	
-	public Nebula(String name, int dataIndex, int stardust, int stardustConsumed){
-		_givenName = name;
+	/// (nebulaData.Name, indexNebula, nebulaData.Stardust, nebulaData.StardustConsumed)
+	public Nebula(DataNebula nebulaData, int dataIndex){
+		_givenName = nebulaData.Name;
 		_dataIndex = dataIndex;
-		_stardust = stardust;
-		_stardustConsumed = stardustConsumed;
+		_stardust = nebulaData.Stardust;
+		_stardustConsumed = nebulaData.StardustConsumed;
 	}
+	//public Nebula(String name, int dataIndex, int stardust, int stardustConsumed){
+		//_givenName = name;
+		//_dataIndex = dataIndex;
+		//_stardust = stardust;
+		//_stardustConsumed = stardustConsumed;
+	//}
 	
 	/// Returns the data of the nebula as an DataNebula object.
 	/// Todo refactor later to be a static helper class method.
@@ -55,5 +65,6 @@ public partial class Nebula : Node
 		
 		_stardust += _stardustConsumed;
 		Game.Instance.Data.Nebulas[_dataIndex].Stardust = _stardust;
+		EmitSignal(SignalName.CompositionUpdated);
 	}
 }
