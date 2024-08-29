@@ -38,6 +38,7 @@ project/assembly_name="universe_idle"
 [file_customization]
 
 folder_colors={
+"res://assets/": "green",
 "res://scripts/": "pink"
 }
 
