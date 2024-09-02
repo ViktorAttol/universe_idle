@@ -48,6 +48,7 @@ public partial class ViewNebulas : View
 		mainList.AddChild(newNode);
 	}
 	
+	/// Instantiates a new nebula in the scene object.
 	private CompoNebula CreateCompoNebulaNode(){
 		return (CompoNebula) sceneNebula.Instantiate();
 	}

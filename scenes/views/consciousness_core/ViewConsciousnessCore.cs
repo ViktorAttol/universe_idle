@@ -21,6 +21,7 @@ public partial class ViewConsciousnessCore : View
 		HandlerCCUpgrades.Instance.UpgradeUnlocked += OnUpgradeUnlocked;
 	}
 	
+	/// Initializes all Upgrades
 	private void InitializeUpgrades(){
 		Upgrade[] upgrades = HandlerCCUpgrades.Instance.GetAllUnlockedUpgrades();
 		foreach(Upgrade upgrade in upgrades){
