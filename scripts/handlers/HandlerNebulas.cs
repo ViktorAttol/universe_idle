@@ -12,14 +12,25 @@ public partial class HandlerNebulas : Node
 	[Signal]
 	public delegate void NebulaCreatedEventHandler();
 	
+	/// Reference to the stardust consumption counter.
 	[Export]
 	private Timer timer;
 	
+	/// Maximum amount of nebulas the player can create.
+	private int _maxNebulaCount = 1;
+	
+	public int MaxNebulaCount {
+		get { return _maxNebulaCount; }
+		set { _maxNebulaCount = value; }
+	}
+	
+	/// List of nebulas.
 	private List<Nebula> nebulas = new List<Nebula>();
 	
 	public List<Nebula> Nebulas {
 		get{ return nebulas; }
 	}
+	
 	
 	/// When the szene is created, an instance of this class will be created with the normal constructor
 	/// because the Nebulas Node under Handlers has this as a script attached.
