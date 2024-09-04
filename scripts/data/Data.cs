@@ -21,10 +21,6 @@ public partial class Data : Resource
 	[Export]
 	private DataNebula[] _nebulas = new DataNebula[]{};
 	
-	public int Stardust {
-		get {	return _stardust;	}
-	}
-	
 	public int ConsciousnessCore {
 		get {	return _consciousnessCore;	}
 		set{	_consciousnessCore = value;	}
@@ -43,6 +39,10 @@ public partial class Data : Resource
 		get {	return _nebulas;		}
 	}
 	
+	public int Stardust {
+		get {	return _stardust;	}
+	}
+		
 	public void AddStardust(int amount){
 		_stardust += amount;
 	}

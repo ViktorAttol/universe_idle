@@ -16,14 +16,6 @@ public partial class DataNebula : Resource
 	[Export]
 	private int _stardustConsumed;
 	
-	public DataNebula(){}
-
-	public DataNebula(String name, int stardust, int stardustConsumed){
-		_name = name;
-		_stardust = stardust;
-		_stardustConsumed = stardustConsumed;
-	}
-	
 	public String Name{
 		get { return _name; }
 	}
@@ -36,5 +28,13 @@ public partial class DataNebula : Resource
 	public int StardustConsumed{
 		get { return _stardustConsumed; }
 		set{ _stardustConsumed = value; }
+	}
+	
+	public DataNebula(){}
+
+	public DataNebula(String name, int stardust, int stardustConsumed){
+		_name = name;
+		_stardust = stardust;
+		_stardustConsumed = stardustConsumed;
 	}
 }

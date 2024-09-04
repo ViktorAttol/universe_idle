@@ -20,13 +20,13 @@ public partial class DataUniverse : Resource
 		get {	return _consciousnessCore;	}
 	}
 	
-	public int Stardust {
-		get {	return _stardust;	}
-	}
-	
 	public int StardustMilestoneProgress {
 		get {	return _stardustMilestoneProgress;	}
 		set{	_stardustMilestoneProgress = value;	}
+	}
+	
+	public int Stardust {
+		get {	return _stardust;	}
 	}
 	
 	public void AddStardust(int amount){
