@@ -64,9 +64,9 @@ text = "Universe"
 layout_mode = 2
 text = "Consciousness Core"
 
-[node name="LinkNebulasLinkButton" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+[node name="NebulasLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "NebulasLink"
+text = "Nebulas"
 script = ExtResource("2_hidfh")
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
@@ -135,4 +135,4 @@ view = 2
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/UniverseLink" to="." method="OnUniverseLinkPressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/ConsciousnessCoreLink" to="." method="OnConsciousnessCoreBtnPressed"]
-[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/LinkNebulasLinkButton" to="." method="OnNebulasLinkPressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/NebulasLink" to="." method="OnNebulasLinkPressed"]

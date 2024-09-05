@@ -46,7 +46,7 @@ public partial class CompoNebula : VBoxContainer
 	}
 	
 	private void UpdateLabelComposition(){
-		String text = "[b]Stardust[/b] " + _nebula.Stardust;
+		String text = "Stardust " + _nebula.Stardust;
 		labelComposition.Text = text;
 	}
 	

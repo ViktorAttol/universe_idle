@@ -56,11 +56,8 @@ public partial class HandlerNebulas : Node
 		nebulas.Clear();
 		int indexNebula = 0;
 		foreach(DataNebula nebulaData in Game.Instance.Data.Nebulas){
-			ConstructNebula(indexNebula, nebulaData);
-			//Nebula newNebula = new Nebula(nebulaData, indexNebula);
-			//timer.Timeout += newNebula.OnConsumeStardust;
-			//nebulas.Add(newNebula);
-			indexNebula++;
+			bool successfull = ConstructNebula(indexNebula, nebulaData);
+			if( successfull) indexNebula++;
 		}
 	}
 	
@@ -72,14 +69,10 @@ public partial class HandlerNebulas : Node
 	/// Create a new Nebula and add it to the list.
 	public void CreateNebula(){
 		ConstructNebula(nebulas.Count);
-		//Nebula newNebula = new Nebula();
-		//newNebula.DataIndex = nebulas.Count;
-		//timer.Timeout += newNebula.OnConsumeStardust;
-		//nebulas.Add(newNebula);
-		//Game.Instance.Data.AddNebula(newNebula.GetNebulaData());
 	}
 	
-	private void ConstructNebula(int index, DataNebula nebulaData = null){
+	private bool ConstructNebula(int index, DataNebula nebulaData = null){
+		if(nebulas.Count >= _maxNebulaCount) return false;
 		Nebula newNebula;
 		if(nebulaData == null) {
 			newNebula = new Nebula();
@@ -87,13 +80,14 @@ public partial class HandlerNebulas : Node
 		}
 		else newNebula = new Nebula(nebulaData, index);
 		
-		timer.Timeout += newNebula.OnConsumeStardust;
+		timer.Timeout += newNebula.OnNebulaTimerTimeout;
 		nebulas.Add(newNebula);
 		
 		if(nebulaData == null) {
 			Game.Instance.Data.AddNebula(newNebula.GetNebulaData());
 			OnNebulaCreated();
 		}
+		return true;
 	}
 	
 	/// Changes the stardust consumption value of the single nebula.

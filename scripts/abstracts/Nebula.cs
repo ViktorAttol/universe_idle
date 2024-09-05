@@ -16,7 +16,7 @@ public partial class Nebula : Node
 	/// Amount of stardust inside the nebula
 	private int _stardust = 0;
 	/// Amount of stardust the nebula attracts every second.
-	private int _stardustConsumed = 0;
+	private int _stardustConsumed = 1;
 	
 	public String GivenName {
 		get {	return _givenName;	}
@@ -66,5 +66,15 @@ public partial class Nebula : Node
 		_stardust += _stardustConsumed;
 		Game.Instance.Data.Nebulas[_dataIndex].Stardust = _stardust;
 		EmitSignal(SignalName.CompositionUpdated);
+	}
+	
+	/// Transforms stardust into ionized stardust.
+	public void RefineStardust(){
+		
+	}
+	
+	/// Triggered when the nebula timer times out.	
+	public void OnNebulaTimerTimeout(){
+		ConsumeStardust();
 	}
 }
