@@ -14,15 +14,23 @@ public partial class CompoNebula : VBoxContainer
 	[Export]
 	private RichTextLabel labelComposition;
 	
-	/// References the slider managing the consumption.
+	/// References the slider managing the attraction.
 	[Export]
-	private HSlider consumptionSlider;
-	
+	private HSlider attractionSlider;
+	/// References the slider managing the release.
+	[Export]
+	private HSlider releaseSlider;
 	/// Reference to the nebula which should be displayed;
 	private Nebula _nebula; 
 	
-	/// Max value of the consumption slider.
-	private int consumptionSliderMaxValue = 5;
+	/// Min value of the attraction slider.
+	private int attractionSliderMinValue = 1;
+	/// Max value of the attraction slider.
+	private int attractionSliderMaxValue = 5;
+	/// Min value of the release slider.
+	private int releaseSliderMinValue = 1;
+	/// Max value of the release slider.
+	private int releaseSliderMaxValue = 5;
 	
 	public Nebula Nebula{
 		get{ return _nebula; }
@@ -38,7 +46,7 @@ public partial class CompoNebula : VBoxContainer
 	private void UpdateComponent(){
 		UpdateLabelName();
 		UpdateLabelComposition();
-		UpdateSlider();
+		UpdateAttractionSlider();
 	}
 	
 	private void UpdateLabelName(){
@@ -47,18 +55,32 @@ public partial class CompoNebula : VBoxContainer
 	
 	private void UpdateLabelComposition(){
 		String text = "Stardust " + _nebula.Stardust;
+		if(_nebula.IonizedStardust > 0){
+			text += "\nIonized Stardust: " + _nebula.IonizedStardust;
+		}
 		labelComposition.Text = text;
 	}
 	
-	private void UpdateSlider(){
-		consumptionSlider.MaxValue = consumptionSliderMaxValue;
-		consumptionSlider.Value = _nebula.StardustConsumed;
+	private void UpdateAttractionSlider(){
+		attractionSlider.MinValue = attractionSliderMinValue;
+		attractionSlider.MaxValue = attractionSliderMaxValue;
+		attractionSlider.Value = _nebula.AttractionValue;
 	}
-	private void OnHSliderValueChanged(double value)
+	
+	private void OnAttractionSliderChanged(double value)
 	{
-		HandlerNebulas.Instance.UpdateNebulaStardustConsumptionValue(_nebula.DataIndex, (int)value);
+		HandlerNebulas.Instance.UpdateNebulaStardustAttractionValue(_nebula.DataIndex, (int)value);
+	}
+	
+	private void UpdateReleaseSlider(){
+		releaseSlider.MinValue = releaseSliderMinValue;		
+		releaseSlider.MaxValue = releaseSliderMaxValue;
+		releaseSlider.Value = _nebula.ReleaseValue;
 	}
 }
+
+
+
 
 
 

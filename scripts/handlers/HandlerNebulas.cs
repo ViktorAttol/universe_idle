@@ -91,9 +91,9 @@ public partial class HandlerNebulas : Node
 	}
 	
 	/// Changes the stardust consumption value of the single nebula.
-	public void UpdateNebulaStardustConsumptionValue(int index, int value){
-		nebulas[index].StardustConsumed = value;
-		Game.Instance.Data.Nebulas[index].StardustConsumed = value;
+	public void UpdateNebulaStardustAttractionValue(int index, int value){
+		nebulas[index].AttractionValue = value;
+		Game.Instance.Data.Nebulas[index].AttractionValue = value;
 	}
 	
 	public void OnNebulaCreated(){
