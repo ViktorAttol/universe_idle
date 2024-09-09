@@ -49,10 +49,12 @@ public partial class CompoNebula : VBoxContainer
 		UpdateAttractionSlider();
 	}
 	
+	/// Updates the label name.	
 	private void UpdateLabelName(){
 		labelName.Text = _nebula.GivenName;
 	}
 	
+	/// Updates the label composition.
 	private void UpdateLabelComposition(){
 		String text = "Stardust " + _nebula.Stardust;
 		if(_nebula.IonizedStardust > 0){
@@ -61,17 +63,20 @@ public partial class CompoNebula : VBoxContainer
 		labelComposition.Text = text;
 	}
 	
+	/// Updates the attraction slider.
 	private void UpdateAttractionSlider(){
 		attractionSlider.MinValue = attractionSliderMinValue;
 		attractionSlider.MaxValue = attractionSliderMaxValue;
 		attractionSlider.Value = _nebula.AttractionValue;
 	}
 	
+	/// Informs the subscribers on a changed attraction value.
 	private void OnAttractionSliderChanged(double value)
 	{
 		HandlerNebulas.Instance.UpdateNebulaStardustAttractionValue(_nebula.DataIndex, (int)value);
 	}
 	
+	/// Updates the release slider.
 	private void UpdateReleaseSlider(){
 		releaseSlider.MinValue = releaseSliderMinValue;		
 		releaseSlider.MaxValue = releaseSliderMaxValue;
