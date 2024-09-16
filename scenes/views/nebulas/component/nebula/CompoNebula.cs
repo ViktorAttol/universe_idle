@@ -82,7 +82,14 @@ public partial class CompoNebula : VBoxContainer
 		releaseSlider.MaxValue = releaseSliderMaxValue;
 		releaseSlider.Value = _nebula.ReleaseValue;
 	}
+	
+	/// Triggered when the release slider value is changed.
+	private void OnReleaseSliderValueChanged(double value)
+	{
+		HandlerNebulas.Instance.UpdateNebulaReleaseValue(_nebula.DataIndex, (int)value);
+	}
 }
+
 
 
 

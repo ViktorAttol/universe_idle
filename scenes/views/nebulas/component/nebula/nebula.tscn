@@ -112,3 +112,4 @@ layout_mode = 2
 text = "5"
 
 [connection signal="value_changed" from="MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/AttractionSlider" to="." method="OnAttractionSliderChanged"]
+[connection signal="value_changed" from="MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/ReleaseSlider" to="." method="OnReleaseSliderValueChanged"]

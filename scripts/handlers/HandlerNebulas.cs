@@ -99,4 +99,10 @@ public partial class HandlerNebulas : Node
 	public void OnNebulaCreated(){
 		EmitSignal(SignalName.NebulaCreated);
 	}
+	
+		/// Changes theionized stardust release value of the single nebula.
+	public void UpdateNebulaReleaseValue(int index, int value){
+		nebulas[index].ReleaseValue = value;
+		Game.Instance.Data.Nebulas[index].ReleaseValue = value;
+	}
 }
