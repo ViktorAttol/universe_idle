@@ -65,9 +65,7 @@ public partial class CompoNebula : VBoxContainer
 	
 	/// Updates the attraction slider.
 	private void UpdateAttractionSlider(){
-		attractionSlider.MinValue = attractionSliderMinValue;
-		attractionSlider.MaxValue = attractionSliderMaxValue;
-		attractionSlider.Value = _nebula.AttractionValue;
+		UpdateSlider(attractionSlider, attractionSliderMinValue, attractionSliderMaxValue, _nebula.AttractionValue);
 	}
 	
 	/// Informs the subscribers on a changed attraction value.
@@ -78,9 +76,13 @@ public partial class CompoNebula : VBoxContainer
 	
 	/// Updates the release slider.
 	private void UpdateReleaseSlider(){
-		releaseSlider.MinValue = releaseSliderMinValue;		
-		releaseSlider.MaxValue = releaseSliderMaxValue;
-		releaseSlider.Value = _nebula.ReleaseValue;
+		UpdateSlider(releaseSlider, releaseSliderMinValue, releaseSliderMaxValue, _nebula.ReleaseValue);
+	}
+	
+	private void UpdateSlider(HSlider slider, int minValue, int maxValue, int Value){
+		slider.MinValue = minValue;		
+		slider.MaxValue = maxValue;
+		slider.Value = Value;
 	}
 	
 	/// Triggered when the release slider value is changed.
