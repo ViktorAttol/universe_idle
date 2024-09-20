@@ -96,6 +96,7 @@ public partial class HandlerNebulas : Node
 		Game.Instance.Data.Nebulas[index].AttractionValue = value;
 	}
 	
+	/// Emits signal to subrscribers.
 	public void OnNebulaCreated(){
 		EmitSignal(SignalName.NebulaCreated);
 	}
