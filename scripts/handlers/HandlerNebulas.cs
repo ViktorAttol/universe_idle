@@ -45,6 +45,9 @@ public partial class HandlerNebulas : Node
 		LoadNebulas();
 	}
 	
+	/// When the object this script is attached to is created an instance of this class will be automatically created. 
+	/// It will be created even if the constructor is private!!! 
+	/// So when using the singleton pattern in combination with cripts attached to godot nodes the instance has to be set in the constructor.
 	private HandlerNebulas(){
 		_instance = this;
 	}
@@ -71,6 +74,9 @@ public partial class HandlerNebulas : Node
 		ConstructNebula(nebulas.Count);
 	}
 	
+	/// Builds a new Nebula. 
+	/// Index gives the new nebula its id. There should be only one nebula per id.
+	/// Nebula data can be set to instantiate new nebula with existing data.
 	private bool ConstructNebula(int index, DataNebula nebulaData = null){
 		if(nebulas.Count >= _maxNebulaCount) return false;
 		Nebula newNebula;
